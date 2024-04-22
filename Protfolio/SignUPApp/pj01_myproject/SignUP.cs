@@ -114,9 +114,9 @@ namespace pj01_myproject
                     cmd.Parameters.Add(prmUserEmail);
                     cmd.Parameters.Add(prmGender);
 
-                    int rowsAffected = cmd.ExecuteNonQuery();
+                    int result = cmd.ExecuteNonQuery();
 
-                    if (rowsAffected > 0)
+                    if (result > 0)
                     {
                         MessageBox.Show("회원가입이 완료되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return true;

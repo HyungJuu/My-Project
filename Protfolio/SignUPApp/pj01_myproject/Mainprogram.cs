@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using MetroFramework;
 using MetroFramework.Forms;
 
 namespace pj01_myproject
@@ -62,6 +63,8 @@ namespace pj01_myproject
                             SqlCommand cmd = new SqlCommand(query, conn);
                             cmd.Parameters.AddWithValue("@userid", loginUserId);
                             cmd.Parameters.AddWithValue("@userpwd", insertpwd);
+                            cmd.Parameters.AddWithValue("@username", Txt_InfoName.Text);
+                            //cmd.Parameters.AddWithValue("@userid", Txt_InfoId.Text);
 
                             SqlDataAdapter adapter = new SqlDataAdapter();
                             adapter.SelectCommand = cmd;
@@ -69,10 +72,21 @@ namespace pj01_myproject
                             DataTable dt = new DataTable();
                             adapter.Fill(dt);
 
+                            // 다시확인
+                            //DataSet ds = new DataSet();
+                            //adapter.Fill(dt);
+                            //Dgv_show.DataSource = ds.Tables[0];
+                            //Dgv_show.ReadOnly = true; // 수정불가
+                            //Dgv_show.Columns[0].HeaderText = "이름";
+                            //Dgv_show.Columns[1].HeaderText = "아이디";
+                            //Dgv_show.Columns[2].HeaderText = "전화번호";
+                            //Dgv_show.Columns[3].HeaderText = "이메일";
+                            //Dgv_show.Columns[4].HeaderText = "성별";
+
                             // 데이터테이블 초기화
-                            dataGridView1.DataSource = null;
-                            dataGridView1.Rows.Clear();
-                            dataGridView1.Columns.Clear();
+                            Dgv_show.DataSource = null;
+                            Dgv_show.Rows.Clear();
+                            Dgv_show.Columns.Clear();
 
                             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -81,7 +95,7 @@ namespace pj01_myproject
                                 //DataTable dt = new DataTable();
                                 //dt.Load(reader);
 
-                                dataGridView1.DataSource = dt;
+                                Dgv_show.DataSource = dt;
 
                                 MessageBox.Show("비밀번호가 확인되었습니다\n회원정보를 조회합니다", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }

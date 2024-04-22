@@ -131,12 +131,13 @@ namespace pj01_myproject
                 cmd.Parameters.Add(prmUserPwd);
 
                 SqlDataReader reader = cmd.ExecuteReader();
+                //var result = cmd.ExecuteNonQuery();
 
-                if (reader.Read())
+                if (reader.Read()) //reader.Read()
                 {
-                    chkUserID = reader["userid"] != null ? reader["userid"].ToString() : "-"; // 유저아이디가 null일때 - 변경
-                    chkUserPwd = reader["userpwd"] != null ? reader["userpwd"].ToString() : "-"; // 패스워드가 null일때 - 변경
-
+                    //chkUserID = reader["userid"] != null ? reader["userid"].ToString() : "-"; // 유저아이디가 null일때 - 변경
+                    //chkUserPwd = reader["userpwd"] != null ? reader["userpwd"].ToString() : "-"; // 패스워드가 null일때 - 변경
+                    //MessageBox.Show("로그인 성공", "확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
                 else
@@ -145,6 +146,7 @@ namespace pj01_myproject
 
                     return false;
                 }
+                //return true;
             }
         }
 
