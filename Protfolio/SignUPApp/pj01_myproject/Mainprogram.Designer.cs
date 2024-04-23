@@ -53,6 +53,7 @@
             this.Btn_Delete.TabIndex = 0;
             this.Btn_Delete.Text = "회원탈퇴";
             this.Btn_Delete.UseVisualStyleBackColor = true;
+            this.Btn_Delete.Click += new System.EventHandler(this.Btn_Delete_Click);
             // 
             // Btn_Exit
             // 
@@ -110,7 +111,7 @@
             // 
             // Txt_InfoName
             // 
-            this.Txt_InfoName.Location = new System.Drawing.Point(200, 50);
+            this.Txt_InfoName.Location = new System.Drawing.Point(203, 85);
             this.Txt_InfoName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_InfoName.Name = "Txt_InfoName";
             this.Txt_InfoName.Size = new System.Drawing.Size(95, 21);
@@ -118,7 +119,7 @@
             // 
             // Txt_InfoId
             // 
-            this.Txt_InfoId.Location = new System.Drawing.Point(200, 87);
+            this.Txt_InfoId.Location = new System.Drawing.Point(203, 122);
             this.Txt_InfoId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_InfoId.Name = "Txt_InfoId";
             this.Txt_InfoId.Size = new System.Drawing.Size(95, 21);
@@ -163,9 +164,10 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Mainprogram";
-            this.Padding = new System.Windows.Forms.Padding(18, 48, 18, 16);
+            this.Padding = new System.Windows.Forms.Padding(18, 60, 18, 16);
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
             this.Style = MetroFramework.MetroColorStyle.White;
+            this.Load += new System.EventHandler(this.Mainprogram_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_show)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

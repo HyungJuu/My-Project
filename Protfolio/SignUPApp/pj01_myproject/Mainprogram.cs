@@ -9,20 +9,55 @@ namespace pj01_myproject
 {
     public partial class Mainprogram : MetroForm
     {
-        private string connString = "Data Source=localhost;" +
-                                    "Initial Catalog=MemberInfo;" +
-                                    "Persist Security Info=True;" +
-                                    "User ID=sa;Encrypt=False;Password=mssql_p@ss";
-
         private string loginUserId;
 
-       
         public Mainprogram(string loginUserId) //string loginUserId
         {
             InitializeComponent();
 
             this.loginUserId = loginUserId; // 로그인한 아이디를 저장
         }
+
+        //private bool CheckPassword(string password)
+        //{
+        //    try
+        //    {
+        //        using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
+        //        {
+        //            conn.Open();
+
+        //            string query = @"SELECT username
+        //                          , userid
+        //                          , userphone
+        //                          , useremail
+        //                          , gender
+        //                       FROM signup 
+        //                      WHERE userid = @userid
+        //                        AND userpwd = @userpwd";
+
+        //            SqlCommand cmd = new SqlCommand(query, conn);
+        //            cmd.Parameters.AddWithValue("@userid", loginUserId);
+        //            cmd.Parameters.AddWithValue("@userpwd", password);
+        //            cmd.Parameters.AddWithValue("@username", Txt_InfoName.Text);
+
+        //            SqlDataAdapter adapter = new SqlDataAdapter();
+        //            adapter.SelectCommand = cmd;
+
+        //            DataTable dt = new DataTable();
+        //            adapter.Fill(dt);
+
+        //            Dgv_show.DataSource = dt;
+
+        //            return true; // 비밀번호가 확인되면 true 반환
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"오류 발생: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        return false; // 오류 발생 시 false 반환
+        //    }
+        //}
+
 
         #region '창닫기'
         // 창닫기 이벤트핸들러
@@ -46,7 +81,7 @@ namespace pj01_myproject
 
                     try
                     {
-                        using (SqlConnection conn = new SqlConnection(connString))
+                        using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
                         {
                             conn.Open();
 
@@ -71,17 +106,6 @@ namespace pj01_myproject
 
                             DataTable dt = new DataTable();
                             adapter.Fill(dt);
-
-                            // 다시확인
-                            //DataSet ds = new DataSet();
-                            //adapter.Fill(dt);
-                            //Dgv_show.DataSource = ds.Tables[0];
-                            //Dgv_show.ReadOnly = true; // 수정불가
-                            //Dgv_show.Columns[0].HeaderText = "이름";
-                            //Dgv_show.Columns[1].HeaderText = "아이디";
-                            //Dgv_show.Columns[2].HeaderText = "전화번호";
-                            //Dgv_show.Columns[3].HeaderText = "이메일";
-                            //Dgv_show.Columns[4].HeaderText = "성별";
 
                             // 데이터테이블 초기화
                             Dgv_show.DataSource = null;
@@ -113,6 +137,66 @@ namespace pj01_myproject
                 else if (result == DialogResult.Cancel)
                 {
                     MessageBox.Show("비밀번호 입력이 취소되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        // 회원탈퇴
+        private void Btn_Delete_Click(object sender, EventArgs e)
+        {
+            var answer = MessageBox.Show(this, "정말 삭제하시겠습니까?", "삭제여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (answer == DialogResult.No) return;
+
+            using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
+            {
+                conn.Open();
+                var query = @"DELETE FROM signup 
+                                    WHERE userid = @userid ";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlParameter prmUserIdx = new SqlParameter("@userid", Txt_InfoId.Text);
+                cmd.Parameters.Add(prmUserIdx);
+
+                var result = cmd.ExecuteNonQuery();
+
+                if (result > 0)
+                {
+                    MessageBox.Show("삭제성공!", "삭제", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("삭제실패!", "삭제", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        // 창을 열었을 때
+        private void Mainprogram_Load(object sender, EventArgs e)
+        {
+            Txt_InfoId.ReadOnly = true;
+            Txt_InfoName.ReadOnly = true;
+
+            using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
+            {
+                conn.Open();
+                var query = @"SELECT username
+                                   , userid 
+                                FROM signup 
+                               WHERE userid = @userid";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@userid", loginUserId);
+
+                // DB에서 사용자 정보를 가져와서 텍스트박스에 연결
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    Txt_InfoName.Text = reader["username"].ToString();
+                    Txt_InfoId.Text = reader["userid"].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("사용자 정보를 가져올 수 없습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

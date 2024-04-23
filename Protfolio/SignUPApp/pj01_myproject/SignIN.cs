@@ -40,10 +40,6 @@ namespace pj01_myproject
     public partial class SignIN : MetroForm
     {
         private bool isLogin = false;
-        private string connString = "Data Source=localhost;" +
-                                    "Initial Catalog=MemberInfo;" +
-                                    "Persist Security Info=True;" +
-                                    "User ID=sa;Encrypt=False;Password=mssql_p@ss";
 
         public bool IsLogin
         {
@@ -113,7 +109,7 @@ namespace pj01_myproject
             string chkUserID = string.Empty;
             string chkUserPwd = string.Empty;
 
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
             {
                 conn.Open();
 

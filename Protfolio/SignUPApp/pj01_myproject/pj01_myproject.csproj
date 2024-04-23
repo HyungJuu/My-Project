@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\Common.cs" />
     <Compile Include="PwdCheck.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -7,11 +7,6 @@ namespace pj01_myproject
 {
     public partial class SignUP : MetroForm
     {
-        private string connString = "Data Source=localhost;" +
-                                    "Initial Catalog=MemberInfo;" +
-                                    "Persist Security Info=True;" +
-                                    "User ID=sa;Encrypt=False;Password=mssql_p@ss";
-
         #region '생성자 초기화 영역'
 
         public SignUP()
@@ -93,12 +88,18 @@ namespace pj01_myproject
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connString))
+                using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
                 {
                     conn.Open();
 
                     string query = @"INSERT INTO signup (username, userid, userpwd, userphone, useremail, gender)
-                                 VALUES (@username, @userid, @userpwd, @userphone, @useremail, @gender)";
+                                     VALUES
+                                          ( @username
+                                          , @userid
+                                          , @userpwd
+                                          , @userphone
+                                          , @useremail
+                                          , @gender)";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     SqlParameter prmUsreName = new SqlParameter("@username", username);
