@@ -11,127 +11,71 @@ namespace pj01_myproject
     {
         private string loginUserId;
 
-        public Mainprogram(string loginUserId) //string loginUserId
+        public Mainprogram(string loginUserId)
         {
             InitializeComponent();
 
             this.loginUserId = loginUserId; // 로그인한 아이디를 저장
         }
 
-        //private bool CheckPassword(string password)
-        //{
-        //    try
-        //    {
-        //        using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
-        //        {
-        //            conn.Open();
-
-        //            string query = @"SELECT username
-        //                          , userid
-        //                          , userphone
-        //                          , useremail
-        //                          , gender
-        //                       FROM signup 
-        //                      WHERE userid = @userid
-        //                        AND userpwd = @userpwd";
-
-        //            SqlCommand cmd = new SqlCommand(query, conn);
-        //            cmd.Parameters.AddWithValue("@userid", loginUserId);
-        //            cmd.Parameters.AddWithValue("@userpwd", password);
-        //            cmd.Parameters.AddWithValue("@username", Txt_InfoName.Text);
-
-        //            SqlDataAdapter adapter = new SqlDataAdapter();
-        //            adapter.SelectCommand = cmd;
-
-        //            DataTable dt = new DataTable();
-        //            adapter.Fill(dt);
-
-        //            Dgv_show.DataSource = dt;
-
-        //            return true; // 비밀번호가 확인되면 true 반환
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"오류 발생: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return false; // 오류 발생 시 false 반환
-        //    }
-        //}
-
-
-        #region '창닫기'
-        // 창닫기 이벤트핸들러
-        private void Btn_Exit_Click(object sender, EventArgs e)
+        // 비밀번호 확인
+        private bool CheckPassword(string userpwd)
         {
-            Application.Exit();
-        }
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
+                {
+                    conn.Open();
 
-        #endregion
+                    string query = @"SELECT username
+                                          , userid
+                                          , userphone
+                                          , useremail
+                                          , gender
+                                       FROM signup 
+                                      WHERE userid = @userid
+                                        AND userpwd = @userpwd";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@userid", loginUserId);
+                    cmd.Parameters.AddWithValue("@userpwd", userpwd);
+                    //cmd.Parameters.AddWithValue("@username", Txt_InfoName.Text);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    adapter.SelectCommand = cmd;
+
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    Dgv_show.DataSource = dt;
+
+                    return true; // 비밀번호가 확인되면 true 반환
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"오류 발생: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false; // 오류 발생 시 false 반환
+            }
+        }
 
         // 정보조회버튼
         private void Btn_ShowInfo_Click(object sender, EventArgs e)
         {
-            using (var pwdchek = new PwdCheck())
+            using (var pwdCheck = new PwdCheck())
             {
-                var result = pwdchek.ShowDialog();  // 비밀번호 확인창
+                var result = pwdCheck.ShowDialog();  // 비밀번호 확인창
 
                 if (result == DialogResult.OK)
                 {
-                    string insertpwd = pwdchek.Pwd; // 입력된 비밀번호를 가져옴
-
-                    try
+                    string insertPwd = pwdCheck.Pwd; // 입력된 비밀번호를 가져옴
+                    if (CheckPassword(insertPwd))
                     {
-                        using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
-                        {
-                            conn.Open();
-
-                            // 비밀번호는 표시하지 않음
-                            string query = @"SELECT username
-                                                  , userid
-                                                  , userphone
-                                                  , useremail
-                                                  , gender
-                                               FROM signup 
-                                              WHERE userid = @userid
-                                                AND userpwd = @userpwd";
-
-                            SqlCommand cmd = new SqlCommand(query, conn);
-                            cmd.Parameters.AddWithValue("@userid", loginUserId);
-                            cmd.Parameters.AddWithValue("@userpwd", insertpwd);
-                            cmd.Parameters.AddWithValue("@username", Txt_InfoName.Text);
-                            //cmd.Parameters.AddWithValue("@userid", Txt_InfoId.Text);
-
-                            SqlDataAdapter adapter = new SqlDataAdapter();
-                            adapter.SelectCommand = cmd;
-
-                            DataTable dt = new DataTable();
-                            adapter.Fill(dt);
-
-                            // 데이터테이블 초기화
-                            Dgv_show.DataSource = null;
-                            Dgv_show.Rows.Clear();
-                            Dgv_show.Columns.Clear();
-
-                            SqlDataReader reader = cmd.ExecuteReader();
-
-                            if (reader.Read())
-                            {
-                                //DataTable dt = new DataTable();
-                                //dt.Load(reader);
-
-                                Dgv_show.DataSource = dt;
-
-                                MessageBox.Show("비밀번호가 확인되었습니다\n회원정보를 조회합니다", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("비밀번호가 일치하지 않습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
+                        MessageBox.Show("비밀번호가 확인되었습니다\n회원정보를 조회합니다", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show($"오류 발생: {ex.Message}", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("비밀번호가 일치하지 않습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else if (result == DialogResult.Cancel)
@@ -141,8 +85,43 @@ namespace pj01_myproject
             }
         }
 
-        // 회원탈퇴
+        // 회원탈퇴버튼 이벤트핸들러
         private void Btn_Delete_Click(object sender, EventArgs e)
+        {
+            using (var pwdCheck = new PwdCheck())
+            {
+                var result = pwdCheck.ShowDialog();  // 비밀번호 확인창
+
+                if (result == DialogResult.OK)
+                {
+                    string insertPwd = pwdCheck.Pwd; // 입력된 비밀번호를 가져옴
+
+                    if (CheckPassword(insertPwd))
+                    {
+                        MessageBox.Show("비밀번호가 확인되었습니다", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        InfoDelete(); // 비밀번호 확인 시 삭제여부 질문 -> 삭제|취소 기능 메서드 호출
+                        Environment.Exit(0);
+                        //// 회원 탈퇴 후 로그인 창으로 이동.. 하고싶었는데.. 종료누르면 종료확인창 또 두번뜸
+                        //this.Hide();
+                        //SignIN signin = new SignIN();
+                        //signin.FormClosed += (s, args) => this.Hide();
+                        //signin.ShowDialog();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("비밀번호가 일치하지 않습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    MessageBox.Show("비밀번호 입력이 취소되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        // 회원정보 삭제
+        private void InfoDelete()
         {
             var answer = MessageBox.Show(this, "정말 삭제하시겠습니까?", "삭제여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (answer == DialogResult.No) return;
@@ -154,7 +133,7 @@ namespace pj01_myproject
                                     WHERE userid = @userid ";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
-                SqlParameter prmUserIdx = new SqlParameter("@userid", Txt_InfoId.Text);
+                SqlParameter prmUserIdx = new SqlParameter("@userid", loginUserId);
                 cmd.Parameters.Add(prmUserIdx);
 
                 var result = cmd.ExecuteNonQuery();
@@ -162,6 +141,7 @@ namespace pj01_myproject
                 if (result > 0)
                 {
                     MessageBox.Show("삭제성공!", "삭제", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
                 else
                 {
@@ -200,5 +180,15 @@ namespace pj01_myproject
                 }
             }
         }
+
+        #region '창닫기'
+        // 창닫기 이벤트핸들러
+        private void Btn_Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        #endregion
+
     }
 }

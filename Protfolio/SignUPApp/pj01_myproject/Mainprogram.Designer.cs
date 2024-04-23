@@ -127,7 +127,7 @@
             // 
             // Btn_ShowInfo
             // 
-            this.Btn_ShowInfo.Location = new System.Drawing.Point(398, 80);
+            this.Btn_ShowInfo.Location = new System.Drawing.Point(329, 80);
             this.Btn_ShowInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_ShowInfo.Name = "Btn_ShowInfo";
             this.Btn_ShowInfo.Size = new System.Drawing.Size(83, 28);
@@ -138,7 +138,7 @@
             // 
             // Btn_ModifyInfo
             // 
-            this.Btn_ModifyInfo.Location = new System.Drawing.Point(398, 121);
+            this.Btn_ModifyInfo.Location = new System.Drawing.Point(329, 117);
             this.Btn_ModifyInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_ModifyInfo.Name = "Btn_ModifyInfo";
             this.Btn_ModifyInfo.Size = new System.Drawing.Size(83, 28);
