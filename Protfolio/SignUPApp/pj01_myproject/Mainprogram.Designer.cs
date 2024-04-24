@@ -145,6 +145,7 @@
             this.Btn_ModifyInfo.TabIndex = 17;
             this.Btn_ModifyInfo.Text = "정보수정";
             this.Btn_ModifyInfo.UseVisualStyleBackColor = true;
+            this.Btn_ModifyInfo.Click += new System.EventHandler(this.Btn_ModifyInfo_Click);
             // 
             // Mainprogram
             // 

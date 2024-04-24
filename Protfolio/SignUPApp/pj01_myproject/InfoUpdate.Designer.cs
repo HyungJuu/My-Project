@@ -1,6 +1,6 @@
 ﻿namespace pj01_myproject
 {
-    partial class SignUP
+    partial class InfoUpdate
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUP));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoUpdate));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -58,55 +58,55 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Location = new System.Drawing.Point(23, 32);
+            this.panel1.Location = new System.Drawing.Point(20, 26);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(295, 395);
+            this.panel1.Size = new System.Drawing.Size(258, 316);
             this.panel1.TabIndex = 1;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 68);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 54);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(295, 150);
+            this.pictureBox1.Size = new System.Drawing.Size(258, 120);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(-1, 230);
+            this.label7.Location = new System.Drawing.Point(-1, 184);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(295, 30);
+            this.label7.Size = new System.Drawing.Size(258, 24);
             this.label7.TabIndex = 1;
-            this.label7.Text = "회원정보입력";
+            this.label7.Text = "회원정보수정";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Btn_Join
             // 
             this.Btn_Join.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btn_Join.Location = new System.Drawing.Point(487, 379);
+            this.Btn_Join.Location = new System.Drawing.Point(426, 303);
             this.Btn_Join.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Join.Name = "Btn_Join";
-            this.Btn_Join.Size = new System.Drawing.Size(95, 35);
+            this.Btn_Join.Size = new System.Drawing.Size(83, 28);
             this.Btn_Join.TabIndex = 9;
             this.Btn_Join.Text = "완료";
             this.Btn_Join.UseVisualStyleBackColor = true;
-            this.Btn_Join.Click += new System.EventHandler(this.Btn_Join_Click);
             // 
             // Btn_Cancel
             // 
             this.Btn_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btn_Cancel.Location = new System.Drawing.Point(601, 379);
+            this.Btn_Cancel.Location = new System.Drawing.Point(526, 303);
             this.Btn_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Cancel.Name = "Btn_Cancel";
-            this.Btn_Cancel.Size = new System.Drawing.Size(95, 35);
+            this.Btn_Cancel.Size = new System.Drawing.Size(83, 28);
             this.Btn_Cancel.TabIndex = 10;
             this.Btn_Cancel.Text = "취소";
             this.Btn_Cancel.UseVisualStyleBackColor = true;
@@ -116,9 +116,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(394, 75);
+            this.label1.Location = new System.Drawing.Point(345, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 15);
+            this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 4;
             this.label1.Text = "이름";
             // 
@@ -126,9 +126,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(379, 125);
+            this.label2.Location = new System.Drawing.Point(332, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 15);
+            this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 4;
             this.label2.Text = "아이디";
             // 
@@ -136,9 +136,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(364, 175);
+            this.label3.Location = new System.Drawing.Point(318, 140);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 4;
             this.label3.Text = "비밀번호";
             // 
@@ -146,9 +146,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(364, 225);
+            this.label4.Location = new System.Drawing.Point(318, 180);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 15);
+            this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 4;
             this.label4.Text = "전화번호";
             // 
@@ -156,123 +156,115 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(337, 275);
+            this.label5.Location = new System.Drawing.Point(295, 220);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 15);
+            this.label5.Size = new System.Drawing.Size(75, 12);
             this.label5.TabIndex = 4;
             this.label5.Text = "이메일(선택)";
             // 
             // Txt_UserName
             // 
-            this.Txt_UserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.Txt_UserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Txt_UserName.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Txt_UserName.Location = new System.Drawing.Point(448, 72);
+            this.Txt_UserName.Location = new System.Drawing.Point(392, 58);
             this.Txt_UserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_UserName.Name = "Txt_UserName";
-            this.Txt_UserName.Size = new System.Drawing.Size(248, 25);
+            this.Txt_UserName.Size = new System.Drawing.Size(218, 21);
             this.Txt_UserName.TabIndex = 1;
-            this.Txt_UserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_UserName_KeyPress);
             // 
             // Txt_UserId
             // 
-            this.Txt_UserId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.Txt_UserId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Txt_UserId.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Txt_UserId.Location = new System.Drawing.Point(448, 122);
+            this.Txt_UserId.Location = new System.Drawing.Point(392, 98);
             this.Txt_UserId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_UserId.Name = "Txt_UserId";
-            this.Txt_UserId.Size = new System.Drawing.Size(248, 25);
+            this.Txt_UserId.Size = new System.Drawing.Size(218, 21);
             this.Txt_UserId.TabIndex = 2;
-            this.Txt_UserId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_UserId_KeyPress);
             // 
             // Txt_UserPwd
             // 
-            this.Txt_UserPwd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.Txt_UserPwd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Txt_UserPwd.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Txt_UserPwd.Location = new System.Drawing.Point(448, 172);
+            this.Txt_UserPwd.Location = new System.Drawing.Point(392, 138);
             this.Txt_UserPwd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_UserPwd.Name = "Txt_UserPwd";
-            this.Txt_UserPwd.Size = new System.Drawing.Size(248, 25);
+            this.Txt_UserPwd.Size = new System.Drawing.Size(218, 21);
             this.Txt_UserPwd.TabIndex = 3;
-            this.Txt_UserPwd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_UserPwd_KeyPress);
             // 
             // Txt_userPhone
             // 
-            this.Txt_userPhone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.Txt_userPhone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Txt_userPhone.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Txt_userPhone.Location = new System.Drawing.Point(448, 222);
+            this.Txt_userPhone.Location = new System.Drawing.Point(392, 178);
             this.Txt_userPhone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_userPhone.Name = "Txt_userPhone";
-            this.Txt_userPhone.Size = new System.Drawing.Size(248, 25);
+            this.Txt_userPhone.Size = new System.Drawing.Size(218, 21);
             this.Txt_userPhone.TabIndex = 4;
-            this.Txt_userPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_userPhone_KeyPress);
             // 
             // Txt_UserEmail
             // 
-            this.Txt_UserEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.Txt_UserEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Txt_UserEmail.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Txt_UserEmail.Location = new System.Drawing.Point(448, 272);
+            this.Txt_UserEmail.Location = new System.Drawing.Point(392, 218);
             this.Txt_UserEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_UserEmail.Name = "Txt_UserEmail";
-            this.Txt_UserEmail.Size = new System.Drawing.Size(248, 25);
+            this.Txt_UserEmail.Size = new System.Drawing.Size(218, 21);
             this.Txt_UserEmail.TabIndex = 5;
-            this.Txt_UserEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_UserEmail_KeyPress);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(394, 333);
+            this.label6.Location = new System.Drawing.Point(345, 266);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 15);
+            this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 8;
             this.label6.Text = "성별";
             // 
             // Chk_Woman
             // 
             this.Chk_Woman.AutoSize = true;
-            this.Chk_Woman.Location = new System.Drawing.Point(448, 332);
+            this.Chk_Woman.Location = new System.Drawing.Point(392, 266);
             this.Chk_Woman.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Chk_Woman.Name = "Chk_Woman";
-            this.Chk_Woman.Size = new System.Drawing.Size(44, 19);
+            this.Chk_Woman.Size = new System.Drawing.Size(36, 16);
             this.Chk_Woman.TabIndex = 6;
             this.Chk_Woman.Text = "여";
             this.Chk_Woman.UseVisualStyleBackColor = true;
-            this.Chk_Woman.CheckedChanged += new System.EventHandler(this.Chk_Woman_CheckedChanged);
             // 
             // Chk_None
             // 
             this.Chk_None.AutoSize = true;
-            this.Chk_None.Location = new System.Drawing.Point(607, 332);
+            this.Chk_None.Location = new System.Drawing.Point(531, 266);
             this.Chk_None.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Chk_None.Name = "Chk_None";
-            this.Chk_None.Size = new System.Drawing.Size(89, 19);
+            this.Chk_None.Size = new System.Drawing.Size(72, 16);
             this.Chk_None.TabIndex = 8;
             this.Chk_None.Text = "선택안함";
             this.Chk_None.UseVisualStyleBackColor = true;
-            this.Chk_None.CheckedChanged += new System.EventHandler(this.Chk_None_CheckedChanged);
             // 
             // Chk_Man
             // 
             this.Chk_Man.AutoSize = true;
-            this.Chk_Man.Location = new System.Drawing.Point(527, 332);
+            this.Chk_Man.Location = new System.Drawing.Point(461, 266);
             this.Chk_Man.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Chk_Man.Name = "Chk_Man";
-            this.Chk_Man.Size = new System.Drawing.Size(44, 19);
+            this.Chk_Man.Size = new System.Drawing.Size(36, 16);
             this.Chk_Man.TabIndex = 7;
             this.Chk_Man.Text = "남";
             this.Chk_Man.UseVisualStyleBackColor = true;
-            this.Chk_Man.CheckedChanged += new System.EventHandler(this.Chk_Man_CheckedChanged);
             // 
-            // SignUP
+            // InfoUpdate
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 450);
+            this.ClientSize = new System.Drawing.Size(656, 360);
             this.ControlBox = false;
             this.Controls.Add(this.Chk_Man);
             this.Controls.Add(this.Chk_None);
@@ -295,8 +287,8 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "SignUP";
-            this.Padding = new System.Windows.Forms.Padding(21, 75, 21, 20);
+            this.Name = "InfoUpdate";
+            this.Padding = new System.Windows.Forms.Padding(18, 60, 18, 16);
             this.Resizable = false;
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
             this.Style = MetroFramework.MetroColorStyle.White;

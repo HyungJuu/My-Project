@@ -68,6 +68,12 @@
     <Compile Include="Mainprogram.Designer.cs">
       <DependentUpon>Mainprogram.cs</DependentUpon>
     </Compile>
+    <Compile Include="InfoUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoUpdate.Designer.cs">
+      <DependentUpon>InfoUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="SignUP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </Compile>
     <EmbeddedResource Include="SignIN.resx">
       <DependentUpon>SignIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoUpdate.resx">
+      <DependentUpon>InfoUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SignUP.resx">
       <DependentUpon>SignUP.cs</DependentUpon>

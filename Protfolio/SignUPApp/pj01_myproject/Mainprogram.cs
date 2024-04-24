@@ -9,6 +9,7 @@ namespace pj01_myproject
 {
     public partial class Mainprogram : MetroForm
     {
+        InfoUpdate infoUpdate = null;
         private string loginUserId;
 
         public Mainprogram(string loginUserId)
@@ -49,7 +50,14 @@ namespace pj01_myproject
 
                     Dgv_show.DataSource = dt;
 
-                    return true; // 비밀번호가 확인되면 true 반환
+                    if (dt.Rows.Count > 0)
+                    {
+                        return true; // 비밀번호가 맞으면 true
+                    }
+                    else
+                    {
+                        return false; // 비밀번호가 틀리면 false
+                    }
                 }
             }
             catch (Exception ex)
@@ -190,5 +198,37 @@ namespace pj01_myproject
 
         #endregion
 
+        // 회원정보 수정버튼 이벤트핸들러
+        private void Btn_ModifyInfo_Click(object sender, EventArgs e)
+        {
+            infoUpdate = ShowActiveForm(infoUpdate, typeof(InfoUpdate)) as InfoUpdate;
+        }
+
+        private InfoUpdate ShowActiveForm(InfoUpdate infoUpdate, Type type)
+        {
+            if (infoUpdate == null)
+            {
+                infoUpdate = Activator.CreateInstance(type) as InfoUpdate;
+                infoUpdate.MdiParent = this; // 자식창의 부모는 FrmMain
+                infoUpdate.WindowState = FormWindowState.Normal;
+                infoUpdate.Show();
+            }
+            else
+            {
+                if (infoUpdate.IsDisposed) // 창이 한번 닫혔으면
+                {
+                    infoUpdate = Activator.CreateInstance(type) as InfoUpdate;
+                    infoUpdate.MdiParent = this; // 자식창의 부모는 FrmMain
+                    infoUpdate.WindowState = FormWindowState.Normal;
+                    infoUpdate.Show();
+                }
+                else // 창을 최소화, 열려있으면
+                {
+                    infoUpdate.Activate();
+                }
+            }
+            return infoUpdate;
+        }
+        
     }
 }

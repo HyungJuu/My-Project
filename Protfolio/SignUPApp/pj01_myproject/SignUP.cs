@@ -92,6 +92,22 @@ namespace pj01_myproject
                 {
                     conn.Open();
 
+
+                    // 입력한 아이디가 존재하는지 확인
+                    string checkQuery = @"SELECT COUNT(*) 
+                                            FROM signup 
+                                           WHERE userid = @userid";
+                    SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
+                    checkCmd.Parameters.AddWithValue("@userid", userid);
+                    int count = (int)checkCmd.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        MessageBox.Show("이미 존재하는 아이디입니다.\n다른 아이디를 입력해주세요.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+
+
                     string query = @"INSERT INTO signup (username, userid, userpwd, userphone, useremail, gender)
                                      VALUES
                                           ( @username
