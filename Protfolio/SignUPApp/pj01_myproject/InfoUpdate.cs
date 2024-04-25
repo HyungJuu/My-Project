@@ -40,8 +40,8 @@ namespace pj01_myproject
                                           , userphone
                                           , useremail
                                           , gender
-                                     FROM signup
-                                    WHERE userid = @userid";
+                                       FROM signup
+                                      WHERE userid = @userid";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@userid", loginUserId);

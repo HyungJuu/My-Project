@@ -40,6 +40,7 @@
             this.Btn_ModifyInfo = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.Txt_Memo = new MetroFramework.Controls.MetroTextBox();
+            this.Btn_SaveMemo = new MetroFramework.Controls.MetroButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_show)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -193,12 +194,22 @@
             this.Txt_Memo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.Txt_Memo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
+            // Btn_SaveMemo
+            // 
+            this.Btn_SaveMemo.Location = new System.Drawing.Point(524, 285);
+            this.Btn_SaveMemo.Name = "Btn_SaveMemo";
+            this.Btn_SaveMemo.Size = new System.Drawing.Size(54, 22);
+            this.Btn_SaveMemo.TabIndex = 20;
+            this.Btn_SaveMemo.Text = "저장";
+            this.Btn_SaveMemo.UseSelectable = true;
+            // 
             // Mainprogram
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 457);
             this.ControlBox = false;
+            this.Controls.Add(this.Btn_SaveMemo);
             this.Controls.Add(this.Txt_Memo);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.Btn_ModifyInfo);
@@ -238,5 +249,6 @@
         private System.Windows.Forms.Button Btn_ModifyInfo;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private MetroFramework.Controls.MetroTextBox Txt_Memo;
+        private MetroFramework.Controls.MetroButton Btn_SaveMemo;
     }
 }

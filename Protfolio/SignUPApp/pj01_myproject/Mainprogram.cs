@@ -179,6 +179,8 @@ namespace pj01_myproject
                                 FROM signup 
                                WHERE userid = @userid";
 
+                //var query = @"IN";
+                // TODO : 이어서
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@userid", loginUserId);
