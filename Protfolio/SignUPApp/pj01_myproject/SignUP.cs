@@ -75,7 +75,7 @@ namespace pj01_myproject
 
         #endregion
 
-
+        #region '회원가입 DB처리'
         // 회원가입 DB처리 시작
         private bool SignUpProcess()
         {
@@ -151,6 +151,7 @@ namespace pj01_myproject
                 return false;
             }
         }
+        #endregion
 
         #region '엔터키로 넘어가기'
 
@@ -251,8 +252,17 @@ namespace pj01_myproject
                 gender = "";
             }
         }
+
         #endregion
 
-
+        #region '비밀번호 표시유무'
+        private void Chk_Show_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Chk_Show.Checked)
+                Txt_UserPwd.PasswordChar = '\0';
+            else
+                Txt_UserPwd.PasswordChar = '●';
+        }
+        #endregion
     }
 }

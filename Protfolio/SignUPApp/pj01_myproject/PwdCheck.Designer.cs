@@ -45,6 +45,7 @@
             this.Txt_pwdcheck.PasswordChar = '●';
             this.Txt_pwdcheck.Size = new System.Drawing.Size(208, 21);
             this.Txt_pwdcheck.TabIndex = 1;
+            this.Txt_pwdcheck.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_pwdcheck_KeyPress);
             // 
             // Btn_Ok
             // 

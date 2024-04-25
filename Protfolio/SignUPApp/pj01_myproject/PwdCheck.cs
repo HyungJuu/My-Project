@@ -26,5 +26,19 @@ namespace pj01_myproject
             DialogResult = DialogResult.Cancel;
             Close();
         }
+
+
+        #region '엔터키로 넘어가기'
+
+        // 비밀번호 입력창 -> 확인
+        private void Txt_pwdcheck_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                Btn_Ok.Focus();
+            }
+        }
+        #endregion
+
     }
 }

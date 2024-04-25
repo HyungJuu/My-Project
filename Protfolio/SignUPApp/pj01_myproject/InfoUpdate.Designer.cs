@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.Btn_Join = new System.Windows.Forms.Button();
+            this.Btn_Update = new System.Windows.Forms.Button();
             this.Btn_Cancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,6 +48,7 @@
             this.Chk_Woman = new System.Windows.Forms.CheckBox();
             this.Chk_None = new System.Windows.Forms.CheckBox();
             this.Chk_Man = new System.Windows.Forms.CheckBox();
+            this.Chk_Show = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -89,16 +90,17 @@
             this.label7.Text = "회원정보수정";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Btn_Join
+            // Btn_Update
             // 
-            this.Btn_Join.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btn_Join.Location = new System.Drawing.Point(426, 303);
-            this.Btn_Join.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Btn_Join.Name = "Btn_Join";
-            this.Btn_Join.Size = new System.Drawing.Size(83, 28);
-            this.Btn_Join.TabIndex = 9;
-            this.Btn_Join.Text = "완료";
-            this.Btn_Join.UseVisualStyleBackColor = true;
+            this.Btn_Update.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Update.Location = new System.Drawing.Point(426, 303);
+            this.Btn_Update.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Update.Name = "Btn_Update";
+            this.Btn_Update.Size = new System.Drawing.Size(83, 28);
+            this.Btn_Update.TabIndex = 10;
+            this.Btn_Update.Text = "수정";
+            this.Btn_Update.UseVisualStyleBackColor = true;
+            this.Btn_Update.Click += new System.EventHandler(this.Btn_Update_Click);
             // 
             // Btn_Cancel
             // 
@@ -107,7 +109,7 @@
             this.Btn_Cancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Cancel.Name = "Btn_Cancel";
             this.Btn_Cancel.Size = new System.Drawing.Size(83, 28);
-            this.Btn_Cancel.TabIndex = 10;
+            this.Btn_Cancel.TabIndex = 11;
             this.Btn_Cancel.Text = "취소";
             this.Btn_Cancel.UseVisualStyleBackColor = true;
             this.Btn_Cancel.Click += new System.EventHandler(this.Btn_Cancel_Click);
@@ -192,6 +194,7 @@
             this.Txt_UserPwd.Location = new System.Drawing.Point(392, 138);
             this.Txt_UserPwd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_UserPwd.Name = "Txt_UserPwd";
+            this.Txt_UserPwd.PasswordChar = '●';
             this.Txt_UserPwd.Size = new System.Drawing.Size(218, 21);
             this.Txt_UserPwd.TabIndex = 3;
             // 
@@ -204,7 +207,7 @@
             this.Txt_userPhone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_userPhone.Name = "Txt_userPhone";
             this.Txt_userPhone.Size = new System.Drawing.Size(218, 21);
-            this.Txt_userPhone.TabIndex = 4;
+            this.Txt_userPhone.TabIndex = 5;
             // 
             // Txt_UserEmail
             // 
@@ -215,12 +218,12 @@
             this.Txt_UserEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_UserEmail.Name = "Txt_UserEmail";
             this.Txt_UserEmail.Size = new System.Drawing.Size(218, 21);
-            this.Txt_UserEmail.TabIndex = 5;
+            this.Txt_UserEmail.TabIndex = 6;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(345, 266);
+            this.label6.Location = new System.Drawing.Point(345, 264);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 8;
@@ -229,35 +232,52 @@
             // Chk_Woman
             // 
             this.Chk_Woman.AutoSize = true;
-            this.Chk_Woman.Location = new System.Drawing.Point(392, 266);
+            this.Chk_Woman.Location = new System.Drawing.Point(392, 264);
             this.Chk_Woman.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Chk_Woman.Name = "Chk_Woman";
             this.Chk_Woman.Size = new System.Drawing.Size(36, 16);
-            this.Chk_Woman.TabIndex = 6;
+            this.Chk_Woman.TabIndex = 7;
             this.Chk_Woman.Text = "여";
             this.Chk_Woman.UseVisualStyleBackColor = true;
+            this.Chk_Woman.CheckedChanged += new System.EventHandler(this.Chk_Woman_CheckedChanged);
             // 
             // Chk_None
             // 
             this.Chk_None.AutoSize = true;
-            this.Chk_None.Location = new System.Drawing.Point(531, 266);
+            this.Chk_None.Location = new System.Drawing.Point(531, 264);
             this.Chk_None.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Chk_None.Name = "Chk_None";
             this.Chk_None.Size = new System.Drawing.Size(72, 16);
-            this.Chk_None.TabIndex = 8;
+            this.Chk_None.TabIndex = 9;
             this.Chk_None.Text = "선택안함";
             this.Chk_None.UseVisualStyleBackColor = true;
+            this.Chk_None.CheckedChanged += new System.EventHandler(this.Chk_None_CheckedChanged);
             // 
             // Chk_Man
             // 
             this.Chk_Man.AutoSize = true;
-            this.Chk_Man.Location = new System.Drawing.Point(461, 266);
+            this.Chk_Man.Location = new System.Drawing.Point(461, 264);
             this.Chk_Man.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Chk_Man.Name = "Chk_Man";
             this.Chk_Man.Size = new System.Drawing.Size(36, 16);
-            this.Chk_Man.TabIndex = 7;
+            this.Chk_Man.TabIndex = 8;
             this.Chk_Man.Text = "남";
             this.Chk_Man.UseVisualStyleBackColor = true;
+            this.Chk_Man.CheckedChanged += new System.EventHandler(this.Chk_Man_CheckedChanged);
+            // 
+            // Chk_Show
+            // 
+            this.Chk_Show.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Chk_Show.AutoSize = true;
+            this.Chk_Show.Font = new System.Drawing.Font("굴림", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Chk_Show.Location = new System.Drawing.Point(516, 163);
+            this.Chk_Show.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Chk_Show.Name = "Chk_Show";
+            this.Chk_Show.Size = new System.Drawing.Size(94, 15);
+            this.Chk_Show.TabIndex = 4;
+            this.Chk_Show.Text = "비밀번호 표시";
+            this.Chk_Show.UseVisualStyleBackColor = true;
+            this.Chk_Show.CheckedChanged += new System.EventHandler(this.Chk_Show_CheckedChanged);
             // 
             // InfoUpdate
             // 
@@ -266,6 +286,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 360);
             this.ControlBox = false;
+            this.Controls.Add(this.Chk_Show);
             this.Controls.Add(this.Chk_Man);
             this.Controls.Add(this.Chk_None);
             this.Controls.Add(this.Chk_Woman);
@@ -281,7 +302,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Btn_Cancel);
-            this.Controls.Add(this.Btn_Join);
+            this.Controls.Add(this.Btn_Update);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -302,7 +323,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button Btn_Join;
+        private System.Windows.Forms.Button Btn_Update;
         private System.Windows.Forms.Button Btn_Cancel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -320,5 +341,6 @@
         private System.Windows.Forms.CheckBox Chk_Man;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox Chk_Show;
     }
 }

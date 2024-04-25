@@ -9,7 +9,7 @@ namespace pj01_myproject
 {
     public partial class Mainprogram : MetroForm
     {
-        InfoUpdate infoUpdate = null;
+        //InfoUpdate infoUpdate = null;
         private string loginUserId;
 
         public Mainprogram(string loginUserId)
@@ -106,13 +106,13 @@ namespace pj01_myproject
 
                     if (CheckPassword(insertPwd))
                     {
-                        MessageBox.Show("비밀번호가 확인되었습니다", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show("비밀번호가 확인되었습니다", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         InfoDelete(); // 비밀번호 확인 시 삭제여부 질문 -> 삭제|취소 기능 메서드 호출
-                        Environment.Exit(0);
-                        //// 회원 탈퇴 후 로그인 창으로 이동.. 하고싶었는데.. 종료누르면 종료확인창 또 두번뜸
+                        //Environment.Exit(0);
+                        //// 회원 탈퇴 후 로그인 창으로 이동.. 하고싶었는데.. 종료누르면 종료확인창 또 두번뜸 -> 구현 완료
                         //this.Hide();
                         //SignIN signin = new SignIN();
-                        //signin.FormClosed += (s, args) => this.Hide();
+                        ////signin.FormClosed += (s, args) => this.Hide();
                         //signin.ShowDialog();
 
                     }
@@ -128,10 +128,10 @@ namespace pj01_myproject
             }
         }
 
-        // 회원정보 삭제
+        #region '회원정보 삭제여부'
         private void InfoDelete()
         {
-            var answer = MessageBox.Show(this, "정말 삭제하시겠습니까?", "삭제여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var answer = MessageBox.Show(this, "비밀번호를 확인하였습니다\n정말 삭제하시겠습니까?", "삭제여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (answer == DialogResult.No) return;
 
             using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
@@ -149,20 +149,27 @@ namespace pj01_myproject
                 if (result > 0)
                 {
                     MessageBox.Show("삭제성공!", "삭제", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    //this.Close();
                 }
                 else
                 {
                     MessageBox.Show("삭제실패!", "삭제", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            this.Hide();
+            SignIN signin = new SignIN();
+            //signin.FormClosed += (s, args) => this.Hide();
+            signin.ShowDialog();
+
         }
+        #endregion
 
         // 창을 열었을 때
         private void Mainprogram_Load(object sender, EventArgs e)
         {
             Txt_InfoId.ReadOnly = true;
             Txt_InfoName.ReadOnly = true;
+            Txt_Memo.Text = null;
 
             using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
             {
@@ -171,6 +178,7 @@ namespace pj01_myproject
                                    , userid 
                                 FROM signup 
                                WHERE userid = @userid";
+
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@userid", loginUserId);
@@ -189,46 +197,44 @@ namespace pj01_myproject
             }
         }
 
-        #region '창닫기'
         // 창닫기 이벤트핸들러
         private void Btn_Exit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
+            var res = MessageBox.Show("정말 종료하시겠습니까?", "종료여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-        #endregion
+            if (res == DialogResult.Yes) Environment.Exit(0);
+
+            //Application.Exit(); // 이거는 원래 물어보는 거
+        }
 
         // 회원정보 수정버튼 이벤트핸들러
         private void Btn_ModifyInfo_Click(object sender, EventArgs e)
         {
-            infoUpdate = ShowActiveForm(infoUpdate, typeof(InfoUpdate)) as InfoUpdate;
-        }
+            using (var pwdCheck = new PwdCheck())
+            {
+                var result = pwdCheck.ShowDialog();
 
-        private InfoUpdate ShowActiveForm(InfoUpdate infoUpdate, Type type)
-        {
-            if (infoUpdate == null)
-            {
-                infoUpdate = Activator.CreateInstance(type) as InfoUpdate;
-                infoUpdate.MdiParent = this; // 자식창의 부모는 FrmMain
-                infoUpdate.WindowState = FormWindowState.Normal;
-                infoUpdate.Show();
-            }
-            else
-            {
-                if (infoUpdate.IsDisposed) // 창이 한번 닫혔으면
+                if (result == DialogResult.OK)
                 {
-                    infoUpdate = Activator.CreateInstance(type) as InfoUpdate;
-                    infoUpdate.MdiParent = this; // 자식창의 부모는 FrmMain
-                    infoUpdate.WindowState = FormWindowState.Normal;
-                    infoUpdate.Show();
+                    string insertPwd = pwdCheck.Pwd; // 입력된 비밀번호를 가져옴
+                    if (CheckPassword(insertPwd)) // 비밀번호가 일치하면 정보수정 폼을 보여줌
+                    {
+                        MessageBox.Show("비밀번호가 확인되었습니다\n회원정보를 조회합니다", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        InfoUpdate infoUpdate = new InfoUpdate(Txt_InfoId.Text);
+                        //infoUpdate.FormClosed += (s, args) => this.Show();
+                        infoUpdate.TopMost = true;
+                        infoUpdate.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("비밀번호가 일치하지 않습니다.", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else // 창을 최소화, 열려있으면
+                else if (result == DialogResult.Cancel)
                 {
-                    infoUpdate.Activate();
+                    MessageBox.Show("비밀번호 입력이 취소되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            return infoUpdate;
         }
-        
     }
 }

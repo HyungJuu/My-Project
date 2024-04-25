@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 
@@ -172,7 +165,9 @@ namespace pj01_myproject
         // 창닫기버튼 이벤트핸들러
         private void Btn_Exit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            var res = MessageBox.Show("정말 종료하시겠습니까?", "종료여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (res == DialogResult.Yes) Environment.Exit(0);
         }
 
         // 창을 닫을 때 종료여부 질문 이벤트핸들러
@@ -189,7 +184,7 @@ namespace pj01_myproject
         private void Btn_SignUp_Click(object sender, EventArgs e)
         {
             SignUP signup = new SignUP();
-            signup.FormClosed += (s, args) => this.Show(); // 회원가입창을 닫을때 로그인창을 다시 띄우도록
+            //signup.FormClosed += (s, args) => this.Show(); // 회원가입창을 닫을때 로그인창을 다시 띄우도록 // 필요없음
             signup.TopMost = true;
             signup.ShowDialog();
             //signup.Hide(); // 원래 회원가입창을 열때 로그인창을 숨기려고 했는데 모달창으로 열어서 로그인창에 간섭하지 못하도록 바꿈
