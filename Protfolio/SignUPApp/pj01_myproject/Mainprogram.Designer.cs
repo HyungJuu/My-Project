@@ -185,7 +185,7 @@
             this.Txt_InputMemo.Name = "Txt_InputMemo";
             this.Txt_InputMemo.PasswordChar = '\0';
             this.Txt_InputMemo.PromptText = "한줄 메모...";
-            this.Txt_InputMemo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Txt_InputMemo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.Txt_InputMemo.SelectedText = "";
             this.Txt_InputMemo.SelectionLength = 0;
             this.Txt_InputMemo.SelectionStart = 0;
