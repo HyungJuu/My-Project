@@ -166,7 +166,6 @@ namespace pj01_myproject
             }
             this.Hide();
             SignIN signin = new SignIN();
-            //signin.FormClosed += (s, args) => this.Hide();
             signin.ShowDialog();
 
         }
@@ -178,8 +177,6 @@ namespace pj01_myproject
             Txt_InfoId.ReadOnly = true;
             Txt_InfoName.ReadOnly = true;
             Txt_InputMemo.Text = null;
-            Txt_ChangedDate.Text = DateTime.Now.ToShortDateString(); // 오늘날짜가 수정날짜 텍스트박스에 표시되도록
-            Txt_ChangedDate.ReadOnly = true; // 날짜 텍스트박스를 수정할 수 없도록
 
             using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
             {
@@ -253,6 +250,7 @@ namespace pj01_myproject
             // 선택된 날짜를 텍스트박스에 표시
             Txt_SelectedSaveDate.Text = selectedDate.ToShortDateString();
             Txt_SelectedSaveDate.ReadOnly = true; // 날짜 텍스트박스를 수정할 수 없도록
+            Txt_OutputMemo.ReadOnly = true;
 
             LoadMemo();
         }
@@ -280,14 +278,11 @@ namespace pj01_myproject
                     Txt_OutputMemo.Text = string.Empty;
                     var memo = string.Empty;
 
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         memo += reader["usermemo"].ToString() + Environment.NewLine;
-
                     }
                     Txt_OutputMemo.Text = memo;
-
-
                 }
             }
             catch (Exception ex)
@@ -301,7 +296,7 @@ namespace pj01_myproject
         {
             if (selectedDate == DateTime.MinValue) // 날짜를 선택하지 않았으면
             {
-                MessageBox.Show("날짜를 선택해주세요", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                MessageBox.Show("날짜를 선택해주세요", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             string memoText = Txt_InputMemo.Text;
@@ -341,47 +336,16 @@ namespace pj01_myproject
             }
         }
 
-        // 수정버튼 클릭 이벤트핸들러
-        private void Btn_ChangeMemo_Click(object sender, EventArgs e)
+        // 로그아웃버튼 이벤트핸들러
+        private void Btn_Logout_Click(object sender, EventArgs e)
         {
-            string updatedMemo = Txt_OutputMemo.Text;
-            DateTime changedDate = DateTime.Now; // 현재 날짜와 시간을 사용
-            Txt_SelectedSaveDate.Text = selectedDate.ToShortDateString();
+            var res = MessageBox.Show("로그아웃 하시겠습니까?", "로그아웃여부", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            try
+            if (res == DialogResult.Yes)
             {
-                using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
-                {
-                    conn.Open();
-
-                    string query = @"UPDATE Textmemo 
-                                        SET usermemo = @usermemo
-                                          , changedate = @changedate
-                                      WHERE userid = @userid
-                                        AND savedate = @savedate";
-
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@usermemo", updatedMemo);
-                    cmd.Parameters.AddWithValue("@changedate", changedDate);
-                    cmd.Parameters.AddWithValue("@userid", loginUserId);
-                    cmd.Parameters.AddWithValue("@savedate", selectedDate.Date);
-
-                    int rowsAffected = cmd.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
-                    {
-                        MessageBox.Show("메모가 수정되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Txt_OutputMemo.Text = string.Empty; // 수정 후 빈텍스트로 초기화
-                    }
-                    else
-                    {
-                        MessageBox.Show("메모 수정에 실패했습니다.", "실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("오류 발생: " + ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Hide();
+                SignIN signin = new SignIN();
+                signin.ShowDialog();
             }
         }
     }

@@ -43,8 +43,7 @@
             this.Btn_SaveMemo = new MetroFramework.Controls.MetroButton();
             this.Txt_SelectedSaveDate = new MetroFramework.Controls.MetroTextBox();
             this.Txt_OutputMemo = new MetroFramework.Controls.MetroTextBox();
-            this.Txt_ChangedDate = new MetroFramework.Controls.MetroTextBox();
-            this.Btn_ChangeMemo = new MetroFramework.Controls.MetroButton();
+            this.Btn_Signout = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_show)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -52,10 +51,10 @@
             // 
             // Btn_Delete
             // 
-            this.Btn_Delete.Location = new System.Drawing.Point(25, 471);
+            this.Btn_Delete.Location = new System.Drawing.Point(503, 449);
             this.Btn_Delete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Delete.Name = "Btn_Delete";
-            this.Btn_Delete.Size = new System.Drawing.Size(83, 28);
+            this.Btn_Delete.Size = new System.Drawing.Size(75, 25);
             this.Btn_Delete.TabIndex = 4;
             this.Btn_Delete.Text = "회원탈퇴";
             this.Btn_Delete.UseVisualStyleBackColor = true;
@@ -77,7 +76,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.Dgv_show);
-            this.panel1.Location = new System.Drawing.Point(25, 406);
+            this.panel1.Location = new System.Drawing.Point(25, 384);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(553, 61);
@@ -87,7 +86,7 @@
             // 
             this.Dgv_show.AllowUserToAddRows = false;
             this.Dgv_show.AllowUserToDeleteRows = false;
-            this.Dgv_show.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.Dgv_show.BackgroundColor = System.Drawing.Color.Azure;
             this.Dgv_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_show.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Dgv_show.Location = new System.Drawing.Point(0, 0);
@@ -126,6 +125,7 @@
             // 
             // Txt_InfoId
             // 
+            this.Txt_InfoId.BackColor = System.Drawing.SystemColors.Window;
             this.Txt_InfoId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Txt_InfoId.Font = new System.Drawing.Font("나눔고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Txt_InfoId.Location = new System.Drawing.Point(204, 124);
@@ -274,59 +274,27 @@
             this.Txt_OutputMemo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.Txt_OutputMemo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // Txt_ChangedDate
+            // Btn_Signout
             // 
-            // 
-            // 
-            // 
-            this.Txt_ChangedDate.CustomButton.Image = null;
-            this.Txt_ChangedDate.CustomButton.Location = new System.Drawing.Point(64, 1);
-            this.Txt_ChangedDate.CustomButton.Name = "";
-            this.Txt_ChangedDate.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.Txt_ChangedDate.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.Txt_ChangedDate.CustomButton.TabIndex = 1;
-            this.Txt_ChangedDate.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.Txt_ChangedDate.CustomButton.UseSelectable = true;
-            this.Txt_ChangedDate.CustomButton.Visible = false;
-            this.Txt_ChangedDate.Lines = new string[0];
-            this.Txt_ChangedDate.Location = new System.Drawing.Point(432, 379);
-            this.Txt_ChangedDate.MaxLength = 32767;
-            this.Txt_ChangedDate.Name = "Txt_ChangedDate";
-            this.Txt_ChangedDate.PasswordChar = '\0';
-            this.Txt_ChangedDate.PromptText = "-- 수정 날짜 --";
-            this.Txt_ChangedDate.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Txt_ChangedDate.SelectedText = "";
-            this.Txt_ChangedDate.SelectionLength = 0;
-            this.Txt_ChangedDate.SelectionStart = 0;
-            this.Txt_ChangedDate.ShortcutsEnabled = true;
-            this.Txt_ChangedDate.Size = new System.Drawing.Size(86, 23);
-            this.Txt_ChangedDate.TabIndex = 21;
-            this.Txt_ChangedDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Txt_ChangedDate.UseSelectable = true;
-            this.Txt_ChangedDate.WaterMark = "-- 수정 날짜 --";
-            this.Txt_ChangedDate.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.Txt_ChangedDate.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // Btn_ChangeMemo
-            // 
-            this.Btn_ChangeMemo.Location = new System.Drawing.Point(524, 379);
-            this.Btn_ChangeMemo.Name = "Btn_ChangeMemo";
-            this.Btn_ChangeMemo.Size = new System.Drawing.Size(54, 22);
-            this.Btn_ChangeMemo.TabIndex = 20;
-            this.Btn_ChangeMemo.Text = "수정";
-            this.Btn_ChangeMemo.UseSelectable = true;
-            this.Btn_ChangeMemo.Click += new System.EventHandler(this.Btn_ChangeMemo_Click);
+            this.Btn_Signout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Btn_Signout.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Btn_Signout.Location = new System.Drawing.Point(484, 9);
+            this.Btn_Signout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Btn_Signout.Name = "Btn_Signout";
+            this.Btn_Signout.Size = new System.Drawing.Size(75, 25);
+            this.Btn_Signout.TabIndex = 5;
+            this.Btn_Signout.Text = "로그아웃";
+            this.Btn_Signout.UseVisualStyleBackColor = true;
+            this.Btn_Signout.Click += new System.EventHandler(this.Btn_Logout_Click);
             // 
             // Mainprogram
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 507);
+            this.ClientSize = new System.Drawing.Size(601, 483);
             this.ControlBox = false;
             this.Controls.Add(this.Txt_OutputMemo);
-            this.Controls.Add(this.Txt_ChangedDate);
             this.Controls.Add(this.Txt_SelectedSaveDate);
-            this.Controls.Add(this.Btn_ChangeMemo);
             this.Controls.Add(this.Btn_SaveMemo);
             this.Controls.Add(this.Txt_InputMemo);
             this.Controls.Add(this.Calendar);
@@ -337,6 +305,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Btn_Delete);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Btn_Signout);
             this.Controls.Add(this.Btn_Exit);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
@@ -371,7 +340,6 @@
         private MetroFramework.Controls.MetroButton Btn_SaveMemo;
         private MetroFramework.Controls.MetroTextBox Txt_SelectedSaveDate;
         private MetroFramework.Controls.MetroTextBox Txt_OutputMemo;
-        private MetroFramework.Controls.MetroTextBox Txt_ChangedDate;
-        private MetroFramework.Controls.MetroButton Btn_ChangeMemo;
+        private System.Windows.Forms.Button Btn_Signout;
     }
 }
