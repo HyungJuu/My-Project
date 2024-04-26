@@ -55,10 +55,10 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.Btn_SignUp);
-            this.panel1.Location = new System.Drawing.Point(23, 32);
+            this.panel1.Location = new System.Drawing.Point(20, 26);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(295, 395);
+            this.panel1.Size = new System.Drawing.Size(258, 316);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -66,10 +66,10 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-6, 61);
+            this.pictureBox1.Location = new System.Drawing.Point(-5, 49);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(275, 168);
+            this.pictureBox1.Size = new System.Drawing.Size(241, 134);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
@@ -80,10 +80,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(-1, 230);
+            this.label5.Location = new System.Drawing.Point(62, 185);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label5.Size = new System.Drawing.Size(295, 30);
+            this.label5.Size = new System.Drawing.Size(139, 24);
             this.label5.TabIndex = 12;
             this.label5.Text = "반갑습니다";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -93,9 +93,9 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.Font = new System.Drawing.Font("굴림", 8.25F);
-            this.label4.Location = new System.Drawing.Point(-1, 327);
+            this.label4.Location = new System.Drawing.Point(62, 254);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(295, 14);
+            this.label4.Size = new System.Drawing.Size(139, 21);
             this.label4.TabIndex = 11;
             this.label4.Text = "기존회원이 아니신가요?";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -104,10 +104,10 @@
             // 
             this.Btn_SignUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_SignUp.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Btn_SignUp.Location = new System.Drawing.Point(103, 346);
+            this.Btn_SignUp.Location = new System.Drawing.Point(90, 277);
             this.Btn_SignUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_SignUp.Name = "Btn_SignUp";
-            this.Btn_SignUp.Size = new System.Drawing.Size(95, 35);
+            this.Btn_SignUp.Size = new System.Drawing.Size(83, 28);
             this.Btn_SignUp.TabIndex = 6;
             this.Btn_SignUp.Text = "회원가입";
             this.Btn_SignUp.UseVisualStyleBackColor = true;
@@ -117,10 +117,10 @@
             // 
             this.Btn_SignIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_SignIn.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Btn_SignIn.Location = new System.Drawing.Point(497, 379);
+            this.Btn_SignIn.Location = new System.Drawing.Point(435, 303);
             this.Btn_SignIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_SignIn.Name = "Btn_SignIn";
-            this.Btn_SignIn.Size = new System.Drawing.Size(95, 35);
+            this.Btn_SignIn.Size = new System.Drawing.Size(83, 28);
             this.Btn_SignIn.TabIndex = 4;
             this.Btn_SignIn.Text = "로그인";
             this.Btn_SignIn.UseVisualStyleBackColor = true;
@@ -130,10 +130,10 @@
             // 
             this.Btn_Clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Clear.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Btn_Clear.Location = new System.Drawing.Point(611, 379);
+            this.Btn_Clear.Location = new System.Drawing.Point(535, 303);
             this.Btn_Clear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Clear.Name = "Btn_Clear";
-            this.Btn_Clear.Size = new System.Drawing.Size(95, 35);
+            this.Btn_Clear.Size = new System.Drawing.Size(83, 28);
             this.Btn_Clear.TabIndex = 5;
             this.Btn_Clear.Text = "초기화";
             this.Btn_Clear.UseVisualStyleBackColor = true;
@@ -143,10 +143,10 @@
             // 
             this.Btn_Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Exit.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Btn_Exit.Location = new System.Drawing.Point(707, 11);
+            this.Btn_Exit.Location = new System.Drawing.Point(619, 9);
             this.Btn_Exit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Exit.Name = "Btn_Exit";
-            this.Btn_Exit.Size = new System.Drawing.Size(30, 30);
+            this.Btn_Exit.Size = new System.Drawing.Size(26, 24);
             this.Btn_Exit.TabIndex = 7;
             this.Btn_Exit.Text = "X";
             this.Btn_Exit.UseVisualStyleBackColor = true;
@@ -156,9 +156,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(356, 75);
+            this.label1.Location = new System.Drawing.Point(312, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 34);
+            this.label1.Size = new System.Drawing.Size(110, 27);
             this.label1.TabIndex = 4;
             this.label1.Text = "로그-인";
             // 
@@ -166,9 +166,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(369, 146);
+            this.label2.Location = new System.Drawing.Point(323, 117);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 17);
+            this.label2.Size = new System.Drawing.Size(49, 14);
             this.label2.TabIndex = 5;
             this.label2.Text = "아이디";
             // 
@@ -176,9 +176,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(369, 226);
+            this.label3.Location = new System.Drawing.Point(323, 181);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 17);
+            this.label3.Size = new System.Drawing.Size(63, 14);
             this.label3.TabIndex = 6;
             this.label3.Text = "비밀번호";
             // 
@@ -187,10 +187,10 @@
             this.Chk_Show.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Chk_Show.AutoSize = true;
             this.Chk_Show.Font = new System.Drawing.Font("굴림", 9F);
-            this.Chk_Show.Location = new System.Drawing.Point(582, 285);
+            this.Chk_Show.Location = new System.Drawing.Point(517, 228);
             this.Chk_Show.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Chk_Show.Name = "Chk_Show";
-            this.Chk_Show.Size = new System.Drawing.Size(124, 19);
+            this.Chk_Show.Size = new System.Drawing.Size(100, 16);
             this.Chk_Show.TabIndex = 3;
             this.Chk_Show.Text = "비밀번호 표시";
             this.Chk_Show.UseVisualStyleBackColor = true;
@@ -201,10 +201,10 @@
             this.Txt_UserId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Txt_UserId.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Txt_UserId.Location = new System.Drawing.Point(373, 176);
+            this.Txt_UserId.Location = new System.Drawing.Point(326, 141);
             this.Txt_UserId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_UserId.Name = "Txt_UserId";
-            this.Txt_UserId.Size = new System.Drawing.Size(333, 25);
+            this.Txt_UserId.Size = new System.Drawing.Size(292, 21);
             this.Txt_UserId.TabIndex = 1;
             this.Txt_UserId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_UserId_KeyPress);
             // 
@@ -213,19 +213,19 @@
             this.Txt_UserPwd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Txt_UserPwd.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Txt_UserPwd.Location = new System.Drawing.Point(373, 256);
+            this.Txt_UserPwd.Location = new System.Drawing.Point(326, 205);
             this.Txt_UserPwd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Txt_UserPwd.Name = "Txt_UserPwd";
             this.Txt_UserPwd.PasswordChar = '●';
-            this.Txt_UserPwd.Size = new System.Drawing.Size(333, 25);
+            this.Txt_UserPwd.Size = new System.Drawing.Size(292, 21);
             this.Txt_UserPwd.TabIndex = 2;
             this.Txt_UserPwd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_UserPwd_KeyPress);
             // 
             // SignIN
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 450);
+            this.ClientSize = new System.Drawing.Size(656, 360);
             this.ControlBox = false;
             this.Controls.Add(this.Txt_UserPwd);
             this.Controls.Add(this.Txt_UserId);
@@ -241,7 +241,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SignIN";
-            this.Padding = new System.Windows.Forms.Padding(21, 75, 21, 20);
+            this.Padding = new System.Windows.Forms.Padding(18, 60, 18, 16);
             this.Resizable = false;
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
             this.Style = MetroFramework.MetroColorStyle.White;

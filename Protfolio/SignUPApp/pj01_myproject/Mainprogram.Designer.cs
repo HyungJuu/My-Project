@@ -38,9 +38,13 @@
             this.Txt_InfoId = new System.Windows.Forms.TextBox();
             this.Btn_ShowInfo = new System.Windows.Forms.Button();
             this.Btn_ModifyInfo = new System.Windows.Forms.Button();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.Txt_Memo = new MetroFramework.Controls.MetroTextBox();
+            this.Calendar = new System.Windows.Forms.MonthCalendar();
+            this.Txt_InputMemo = new MetroFramework.Controls.MetroTextBox();
             this.Btn_SaveMemo = new MetroFramework.Controls.MetroButton();
+            this.Txt_SelectedSaveDate = new MetroFramework.Controls.MetroTextBox();
+            this.Txt_OutputMemo = new MetroFramework.Controls.MetroTextBox();
+            this.Txt_ChangedDate = new MetroFramework.Controls.MetroTextBox();
+            this.Btn_ChangeMemo = new MetroFramework.Controls.MetroButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_show)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -48,8 +52,7 @@
             // 
             // Btn_Delete
             // 
-            this.Btn_Delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Btn_Delete.Location = new System.Drawing.Point(504, 413);
+            this.Btn_Delete.Location = new System.Drawing.Point(25, 471);
             this.Btn_Delete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Delete.Name = "Btn_Delete";
             this.Btn_Delete.Size = new System.Drawing.Size(83, 28);
@@ -62,7 +65,7 @@
             // 
             this.Btn_Exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Exit.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Btn_Exit.Location = new System.Drawing.Point(564, 9);
+            this.Btn_Exit.Location = new System.Drawing.Point(567, 9);
             this.Btn_Exit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Btn_Exit.Name = "Btn_Exit";
             this.Btn_Exit.Size = new System.Drawing.Size(26, 24);
@@ -73,35 +76,32 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.Dgv_show);
-            this.panel1.Location = new System.Drawing.Point(17, 329);
+            this.panel1.Location = new System.Drawing.Point(25, 406);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(570, 80);
+            this.panel1.Size = new System.Drawing.Size(553, 61);
             this.panel1.TabIndex = 10;
             // 
             // Dgv_show
             // 
             this.Dgv_show.AllowUserToAddRows = false;
             this.Dgv_show.AllowUserToDeleteRows = false;
-            this.Dgv_show.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Dgv_show.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.Dgv_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_show.Location = new System.Drawing.Point(8, 18);
+            this.Dgv_show.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Dgv_show.Location = new System.Drawing.Point(0, 0);
             this.Dgv_show.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Dgv_show.Name = "Dgv_show";
             this.Dgv_show.ReadOnly = true;
             this.Dgv_show.RowHeadersWidth = 51;
             this.Dgv_show.RowTemplate.Height = 27;
-            this.Dgv_show.Size = new System.Drawing.Size(553, 47);
+            this.Dgv_show.Size = new System.Drawing.Size(553, 61);
             this.Dgv_show.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBox1.BackColor = System.Drawing.Color.Azure;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(50, 49);
@@ -115,6 +115,7 @@
             // Txt_InfoName
             // 
             this.Txt_InfoName.BackColor = System.Drawing.SystemColors.Window;
+            this.Txt_InfoName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Txt_InfoName.Font = new System.Drawing.Font("나눔고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Txt_InfoName.Location = new System.Drawing.Point(204, 76);
             this.Txt_InfoName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -125,6 +126,7 @@
             // 
             // Txt_InfoId
             // 
+            this.Txt_InfoId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Txt_InfoId.Font = new System.Drawing.Font("나눔고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Txt_InfoId.Location = new System.Drawing.Point(204, 124);
             this.Txt_InfoId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -155,63 +157,179 @@
             this.Btn_ModifyInfo.UseVisualStyleBackColor = true;
             this.Btn_ModifyInfo.Click += new System.EventHandler(this.Btn_ModifyInfo_Click);
             // 
-            // monthCalendar1
+            // Calendar
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(358, 49);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 19;
+            this.Calendar.Location = new System.Drawing.Point(358, 44);
+            this.Calendar.Name = "Calendar";
+            this.Calendar.TabIndex = 19;
+            this.Calendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.Calendar_DateSelected);
             // 
-            // Txt_Memo
+            // Txt_InputMemo
             // 
             // 
             // 
             // 
-            this.Txt_Memo.CustomButton.Image = null;
-            this.Txt_Memo.CustomButton.Location = new System.Drawing.Point(479, 1);
-            this.Txt_Memo.CustomButton.Name = "";
-            this.Txt_Memo.CustomButton.Size = new System.Drawing.Size(73, 73);
-            this.Txt_Memo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.Txt_Memo.CustomButton.TabIndex = 1;
-            this.Txt_Memo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.Txt_Memo.CustomButton.UseSelectable = true;
-            this.Txt_Memo.CustomButton.Visible = false;
-            this.Txt_Memo.Lines = new string[0];
-            this.Txt_Memo.Location = new System.Drawing.Point(25, 232);
-            this.Txt_Memo.MaxLength = 32767;
-            this.Txt_Memo.Multiline = true;
-            this.Txt_Memo.Name = "Txt_Memo";
-            this.Txt_Memo.PasswordChar = '\0';
-            this.Txt_Memo.PromptText = "한줄 정리...";
-            this.Txt_Memo.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Txt_Memo.SelectedText = "";
-            this.Txt_Memo.SelectionLength = 0;
-            this.Txt_Memo.SelectionStart = 0;
-            this.Txt_Memo.ShortcutsEnabled = true;
-            this.Txt_Memo.Size = new System.Drawing.Size(553, 75);
-            this.Txt_Memo.TabIndex = 3;
-            this.Txt_Memo.UseSelectable = true;
-            this.Txt_Memo.WaterMark = "한줄 정리...";
-            this.Txt_Memo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.Txt_Memo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txt_InputMemo.CustomButton.Image = null;
+            this.Txt_InputMemo.CustomButton.Location = new System.Drawing.Point(507, 2);
+            this.Txt_InputMemo.CustomButton.Name = "";
+            this.Txt_InputMemo.CustomButton.Size = new System.Drawing.Size(43, 43);
+            this.Txt_InputMemo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Txt_InputMemo.CustomButton.TabIndex = 1;
+            this.Txt_InputMemo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Txt_InputMemo.CustomButton.UseSelectable = true;
+            this.Txt_InputMemo.CustomButton.Visible = false;
+            this.Txt_InputMemo.Lines = new string[0];
+            this.Txt_InputMemo.Location = new System.Drawing.Point(25, 223);
+            this.Txt_InputMemo.MaxLength = 32767;
+            this.Txt_InputMemo.Multiline = true;
+            this.Txt_InputMemo.Name = "Txt_InputMemo";
+            this.Txt_InputMemo.PasswordChar = '\0';
+            this.Txt_InputMemo.PromptText = "한줄 메모...";
+            this.Txt_InputMemo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Txt_InputMemo.SelectedText = "";
+            this.Txt_InputMemo.SelectionLength = 0;
+            this.Txt_InputMemo.SelectionStart = 0;
+            this.Txt_InputMemo.ShortcutsEnabled = true;
+            this.Txt_InputMemo.Size = new System.Drawing.Size(553, 48);
+            this.Txt_InputMemo.TabIndex = 3;
+            this.Txt_InputMemo.UseSelectable = true;
+            this.Txt_InputMemo.WaterMark = "한줄 메모...";
+            this.Txt_InputMemo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Txt_InputMemo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // Btn_SaveMemo
             // 
-            this.Btn_SaveMemo.Location = new System.Drawing.Point(524, 285);
+            this.Btn_SaveMemo.Location = new System.Drawing.Point(524, 277);
             this.Btn_SaveMemo.Name = "Btn_SaveMemo";
             this.Btn_SaveMemo.Size = new System.Drawing.Size(54, 22);
             this.Btn_SaveMemo.TabIndex = 20;
             this.Btn_SaveMemo.Text = "저장";
             this.Btn_SaveMemo.UseSelectable = true;
+            this.Btn_SaveMemo.Click += new System.EventHandler(this.Btn_SaveMemo_Click);
+            // 
+            // Txt_SelectedSaveDate
+            // 
+            // 
+            // 
+            // 
+            this.Txt_SelectedSaveDate.CustomButton.Image = null;
+            this.Txt_SelectedSaveDate.CustomButton.Location = new System.Drawing.Point(64, 1);
+            this.Txt_SelectedSaveDate.CustomButton.Name = "";
+            this.Txt_SelectedSaveDate.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Txt_SelectedSaveDate.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Txt_SelectedSaveDate.CustomButton.TabIndex = 1;
+            this.Txt_SelectedSaveDate.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Txt_SelectedSaveDate.CustomButton.UseSelectable = true;
+            this.Txt_SelectedSaveDate.CustomButton.Visible = false;
+            this.Txt_SelectedSaveDate.Lines = new string[0];
+            this.Txt_SelectedSaveDate.Location = new System.Drawing.Point(432, 277);
+            this.Txt_SelectedSaveDate.MaxLength = 32767;
+            this.Txt_SelectedSaveDate.Name = "Txt_SelectedSaveDate";
+            this.Txt_SelectedSaveDate.PasswordChar = '\0';
+            this.Txt_SelectedSaveDate.PromptText = "-- 저장 날짜 --";
+            this.Txt_SelectedSaveDate.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Txt_SelectedSaveDate.SelectedText = "";
+            this.Txt_SelectedSaveDate.SelectionLength = 0;
+            this.Txt_SelectedSaveDate.SelectionStart = 0;
+            this.Txt_SelectedSaveDate.ShortcutsEnabled = true;
+            this.Txt_SelectedSaveDate.Size = new System.Drawing.Size(86, 23);
+            this.Txt_SelectedSaveDate.TabIndex = 21;
+            this.Txt_SelectedSaveDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Txt_SelectedSaveDate.UseSelectable = true;
+            this.Txt_SelectedSaveDate.WaterMark = "-- 저장 날짜 --";
+            this.Txt_SelectedSaveDate.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Txt_SelectedSaveDate.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // Txt_OutputMemo
+            // 
+            // 
+            // 
+            // 
+            this.Txt_OutputMemo.CustomButton.Image = null;
+            this.Txt_OutputMemo.CustomButton.Location = new System.Drawing.Point(487, 2);
+            this.Txt_OutputMemo.CustomButton.Name = "";
+            this.Txt_OutputMemo.CustomButton.Size = new System.Drawing.Size(63, 63);
+            this.Txt_OutputMemo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Txt_OutputMemo.CustomButton.TabIndex = 1;
+            this.Txt_OutputMemo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Txt_OutputMemo.CustomButton.UseSelectable = true;
+            this.Txt_OutputMemo.CustomButton.Visible = false;
+            this.Txt_OutputMemo.Lines = new string[0];
+            this.Txt_OutputMemo.Location = new System.Drawing.Point(25, 305);
+            this.Txt_OutputMemo.MaxLength = 32767;
+            this.Txt_OutputMemo.Multiline = true;
+            this.Txt_OutputMemo.Name = "Txt_OutputMemo";
+            this.Txt_OutputMemo.PasswordChar = '\0';
+            this.Txt_OutputMemo.PromptText = "저장된 메모...";
+            this.Txt_OutputMemo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.Txt_OutputMemo.SelectedText = "";
+            this.Txt_OutputMemo.SelectionLength = 0;
+            this.Txt_OutputMemo.SelectionStart = 0;
+            this.Txt_OutputMemo.ShortcutsEnabled = true;
+            this.Txt_OutputMemo.Size = new System.Drawing.Size(553, 68);
+            this.Txt_OutputMemo.TabIndex = 22;
+            this.Txt_OutputMemo.UseCustomBackColor = true;
+            this.Txt_OutputMemo.UseSelectable = true;
+            this.Txt_OutputMemo.WaterMark = "저장된 메모...";
+            this.Txt_OutputMemo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Txt_OutputMemo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // Txt_ChangedDate
+            // 
+            // 
+            // 
+            // 
+            this.Txt_ChangedDate.CustomButton.Image = null;
+            this.Txt_ChangedDate.CustomButton.Location = new System.Drawing.Point(64, 1);
+            this.Txt_ChangedDate.CustomButton.Name = "";
+            this.Txt_ChangedDate.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.Txt_ChangedDate.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Txt_ChangedDate.CustomButton.TabIndex = 1;
+            this.Txt_ChangedDate.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.Txt_ChangedDate.CustomButton.UseSelectable = true;
+            this.Txt_ChangedDate.CustomButton.Visible = false;
+            this.Txt_ChangedDate.Lines = new string[0];
+            this.Txt_ChangedDate.Location = new System.Drawing.Point(432, 379);
+            this.Txt_ChangedDate.MaxLength = 32767;
+            this.Txt_ChangedDate.Name = "Txt_ChangedDate";
+            this.Txt_ChangedDate.PasswordChar = '\0';
+            this.Txt_ChangedDate.PromptText = "-- 수정 날짜 --";
+            this.Txt_ChangedDate.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Txt_ChangedDate.SelectedText = "";
+            this.Txt_ChangedDate.SelectionLength = 0;
+            this.Txt_ChangedDate.SelectionStart = 0;
+            this.Txt_ChangedDate.ShortcutsEnabled = true;
+            this.Txt_ChangedDate.Size = new System.Drawing.Size(86, 23);
+            this.Txt_ChangedDate.TabIndex = 21;
+            this.Txt_ChangedDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Txt_ChangedDate.UseSelectable = true;
+            this.Txt_ChangedDate.WaterMark = "-- 수정 날짜 --";
+            this.Txt_ChangedDate.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.Txt_ChangedDate.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // Btn_ChangeMemo
+            // 
+            this.Btn_ChangeMemo.Location = new System.Drawing.Point(524, 379);
+            this.Btn_ChangeMemo.Name = "Btn_ChangeMemo";
+            this.Btn_ChangeMemo.Size = new System.Drawing.Size(54, 22);
+            this.Btn_ChangeMemo.TabIndex = 20;
+            this.Btn_ChangeMemo.Text = "수정";
+            this.Btn_ChangeMemo.UseSelectable = true;
+            this.Btn_ChangeMemo.Click += new System.EventHandler(this.Btn_ChangeMemo_Click);
             // 
             // Mainprogram
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 457);
+            this.ClientSize = new System.Drawing.Size(601, 507);
             this.ControlBox = false;
+            this.Controls.Add(this.Txt_OutputMemo);
+            this.Controls.Add(this.Txt_ChangedDate);
+            this.Controls.Add(this.Txt_SelectedSaveDate);
+            this.Controls.Add(this.Btn_ChangeMemo);
             this.Controls.Add(this.Btn_SaveMemo);
-            this.Controls.Add(this.Txt_Memo);
-            this.Controls.Add(this.monthCalendar1);
+            this.Controls.Add(this.Txt_InputMemo);
+            this.Controls.Add(this.Calendar);
             this.Controls.Add(this.Btn_ModifyInfo);
             this.Controls.Add(this.Btn_ShowInfo);
             this.Controls.Add(this.Txt_InfoId);
@@ -225,6 +343,7 @@
             this.MinimizeBox = false;
             this.Name = "Mainprogram";
             this.Padding = new System.Windows.Forms.Padding(18, 60, 18, 16);
+            this.Resizable = false;
             this.ShadowType = MetroFramework.Forms.MetroFormShadowType.AeroShadow;
             this.Style = MetroFramework.MetroColorStyle.White;
             this.Load += new System.EventHandler(this.Mainprogram_Load);
@@ -247,8 +366,12 @@
         private System.Windows.Forms.TextBox Txt_InfoId;
         private System.Windows.Forms.Button Btn_ShowInfo;
         private System.Windows.Forms.Button Btn_ModifyInfo;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private MetroFramework.Controls.MetroTextBox Txt_Memo;
+        private System.Windows.Forms.MonthCalendar Calendar;
+        private MetroFramework.Controls.MetroTextBox Txt_InputMemo;
         private MetroFramework.Controls.MetroButton Btn_SaveMemo;
+        private MetroFramework.Controls.MetroTextBox Txt_SelectedSaveDate;
+        private MetroFramework.Controls.MetroTextBox Txt_OutputMemo;
+        private MetroFramework.Controls.MetroTextBox Txt_ChangedDate;
+        private MetroFramework.Controls.MetroButton Btn_ChangeMemo;
     }
 }

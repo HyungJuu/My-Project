@@ -11,6 +11,7 @@ namespace pj01_myproject
     {
         //InfoUpdate infoUpdate = null;
         private string loginUserId;
+        private DateTime selectedDate;
 
         public Mainprogram(string loginUserId)
         {
@@ -49,6 +50,11 @@ namespace pj01_myproject
                     adapter.Fill(dt);
 
                     Dgv_show.DataSource = dt;
+                    Dgv_show.Columns[0].HeaderText = "이름";
+                    Dgv_show.Columns[1].HeaderText = "아이디";
+                    Dgv_show.Columns[2].HeaderText = "전화번호";
+                    Dgv_show.Columns[3].HeaderText = "이메일";
+                    Dgv_show.Columns[4].HeaderText = "성별";
 
                     if (dt.Rows.Count > 0)
                     {
@@ -137,8 +143,11 @@ namespace pj01_myproject
             using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
             {
                 conn.Open();
-                var query = @"DELETE FROM signup 
-                                    WHERE userid = @userid ";
+                // 해당아이디의 정보와 메모들 모두 삭제
+                var query = @"DELETE FROM signup
+                                    WHERE userid = @userid
+                              DELETE FROM Textmemo
+                                    WHERE userid = @userid";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlParameter prmUserIdx = new SqlParameter("@userid", loginUserId);
@@ -149,7 +158,6 @@ namespace pj01_myproject
                 if (result > 0)
                 {
                     MessageBox.Show("삭제성공!", "삭제", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //this.Close();
                 }
                 else
                 {
@@ -169,7 +177,9 @@ namespace pj01_myproject
         {
             Txt_InfoId.ReadOnly = true;
             Txt_InfoName.ReadOnly = true;
-            Txt_Memo.Text = null;
+            Txt_InputMemo.Text = null;
+            Txt_ChangedDate.Text = DateTime.Now.ToShortDateString(); // 오늘날짜가 수정날짜 텍스트박스에 표시되도록
+            Txt_ChangedDate.ReadOnly = true; // 날짜 텍스트박스를 수정할 수 없도록
 
             using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
             {
@@ -178,9 +188,6 @@ namespace pj01_myproject
                                    , userid 
                                 FROM signup 
                                WHERE userid = @userid";
-
-                //var query = @"IN";
-                // TODO : 이어서
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@userid", loginUserId);
@@ -236,6 +243,145 @@ namespace pj01_myproject
                 {
                     MessageBox.Show("비밀번호 입력이 취소되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+        }
+
+        // 달력 날짜선택 이벤트핸들러
+        private void Calendar_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            selectedDate = Calendar.SelectionStart;
+            // 선택된 날짜를 텍스트박스에 표시
+            Txt_SelectedSaveDate.Text = selectedDate.ToShortDateString();
+            Txt_SelectedSaveDate.ReadOnly = true; // 날짜 텍스트박스를 수정할 수 없도록
+
+            LoadMemo();
+        }
+
+        // 저장된 메모를 불러옴
+        private void LoadMemo()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
+                {
+                    conn.Open();
+
+                    string query = @"SELECT usermemo
+                                       FROM Textmemo
+                                      WHERE userid = @userid
+                                        AND savedate = @savedate";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@userid", loginUserId);
+                    cmd.Parameters.AddWithValue("@savedate", selectedDate.Date);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    Txt_OutputMemo.Text = string.Empty;
+                    var memo = string.Empty;
+
+                    while(reader.Read())
+                    {
+                        memo += reader["usermemo"].ToString() + Environment.NewLine;
+
+                    }
+                    Txt_OutputMemo.Text = memo;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("오류 발생: " + ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // 저장버튼 이벤트핸들러
+        private void Btn_SaveMemo_Click(object sender, EventArgs e)
+        {
+            if (selectedDate == DateTime.MinValue) // 날짜를 선택하지 않았으면
+            {
+                MessageBox.Show("날짜를 선택해주세요", "오류", MessageBoxButtons.OK, MessageBoxIcon.Error );
+            }
+
+            string memoText = Txt_InputMemo.Text;
+            string userId = loginUserId;
+            DateTime memoDate = selectedDate.Date;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
+                {
+                    conn.Open();
+
+                    string query = @"INSERT INTO Textmemo (userid, usermemo, savedate)
+                                     VALUES (@userid, @usermemo, @savedate)";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@userid", userId);
+                    cmd.Parameters.AddWithValue("@usermemo", memoText);
+                    cmd.Parameters.AddWithValue("@savedate", memoDate);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("메모가 성공적으로 저장되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Txt_InputMemo.Text = string.Empty;
+                        Txt_SelectedSaveDate.Text = string.Empty;
+                    }
+                    else
+                    {
+                        MessageBox.Show("메모 저장에 실패했습니다.", "실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("오류 발생: " + ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // 수정버튼 클릭 이벤트핸들러
+        private void Btn_ChangeMemo_Click(object sender, EventArgs e)
+        {
+            string updatedMemo = Txt_OutputMemo.Text;
+            DateTime changedDate = DateTime.Now; // 현재 날짜와 시간을 사용
+            Txt_SelectedSaveDate.Text = selectedDate.ToShortDateString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Helper.Common.ConnString))
+                {
+                    conn.Open();
+
+                    string query = @"UPDATE Textmemo 
+                                        SET usermemo = @usermemo
+                                          , changedate = @changedate
+                                      WHERE userid = @userid
+                                        AND savedate = @savedate";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@usermemo", updatedMemo);
+                    cmd.Parameters.AddWithValue("@changedate", changedDate);
+                    cmd.Parameters.AddWithValue("@userid", loginUserId);
+                    cmd.Parameters.AddWithValue("@savedate", selectedDate.Date);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("메모가 수정되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Txt_OutputMemo.Text = string.Empty; // 수정 후 빈텍스트로 초기화
+                    }
+                    else
+                    {
+                        MessageBox.Show("메모 수정에 실패했습니다.", "실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("오류 발생: " + ex.Message, "오류", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
