@@ -27,8 +27,7 @@
 	++ 메모 저장일, 수정일 DB에 저장**
 	++ 회원탈퇴시 해당 아이디의 DB에 저장된 메모들 모두 삭제
 
-
-
+	https://github.com/HyungJuu/My-Project/assets/158007420/de3921bb-592c-4286-848c-4e6a03badf92
 
 ## mssql 연결
 -> mssql에서 가져가고자 하는 데이터베이스 우클릭 -> 태스크 -> 스크립트 생성 -> 다음 -> 다음  
