@@ -13,7 +13,7 @@
 		- 이메일(선택)
 		- 성별
 	
-	![회원가입](https://raw.githubusercontent.com/HyungJuu/My-Project/main/images/PJ1_001.png)
+	![회원가입](https://raw.githubusercontent.com/HyungJuu/My-Project/main/images/PJ1_003.png)
 
 	- 로그인
 		- DB에 저장된 정보(아이디, 비밀번호)를 확인 후 일치하면 로그인
@@ -28,12 +28,17 @@
 			- 로그인 비밀번호 확인 &rarr; 일치하면 정보를 보여줌(보안 : 비밀번호 제외)
 		- 정보 수정
 			- 로그인 비밀번호 확인 &rarr; 일치하면 회원가입시 입력했던 화면을 불러와 수정 후 저장 &rarr; 정보 재조회시 업뎃 완료
+			
+			![정보수정](https://raw.githubusercontent.com/HyungJuu/My-Project/main/images/PJ1_005.png)	
+			
 		- 메모
 			- 화면의 달력에서 날짜 선택 : 선택된 날짜가 아래 텍스트박스에 표시
 			- 메모를 입력 후 저장(동일한 날짜에 중복저장 가능)
 				- 메모가 저장되어 있지 않은 날짜 : 메모를 쓰는 텍스트박스, 저장된 메모를 불러오는 텍스트박스가 모두 비어있음
 				- 메모가 저장되어 있는 날짜 : 메모를 쓰는 텍스트박스는 비어있음, 메모를 불러오는 텍스트박스에는 해당날짜에 입력된 메모를 누적해서 보여줌
 
+	![메인화면](https://raw.githubusercontent.com/HyungJuu/My-Project/main/images/PJ1_004.png)
+	
 	- 로그아웃
 		- 로그인 화면으로 돌아감
 	
