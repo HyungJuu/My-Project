@@ -13,13 +13,13 @@
 		- 이메일(선택)
 		- 성별
 	
-	![회원가입](https://raw.githubusercontent.com/HyungJuu/My-Project/main/images/PJ1_003.png)
+		![회원가입](https://raw.githubusercontent.com/HyungJuu/My-Project/main/images/PJ1_003.png)
 
 	- 로그인
 		- DB에 저장된 정보(아이디, 비밀번호)를 확인 후 일치하면 로그인
 		- 초기화 클릭 시 입력된 아이디, 비밀번호 리셋
 	
-	![로그인](https://raw.githubusercontent.com/HyungJuu/My-Project/main/images/PJ1_002.png)
+		![로그인](https://raw.githubusercontent.com/HyungJuu/My-Project/main/images/PJ1_002.png)
 
 	- 메인
 		- 로그인한 사람의 이름과 아이디 표시
@@ -37,7 +37,7 @@
 				- 메모가 저장되어 있지 않은 날짜 : 메모를 쓰는 텍스트박스, 저장된 메모를 불러오는 텍스트박스가 모두 비어있음
 				- 메모가 저장되어 있는 날짜 : 메모를 쓰는 텍스트박스는 비어있음, 메모를 불러오는 텍스트박스에는 해당날짜에 입력된 메모를 누적해서 보여줌
 
-	![메인화면](https://raw.githubusercontent.com/HyungJuu/My-Project/main/images/PJ1_004.png)
+		![메인화면](https://raw.githubusercontent.com/HyungJuu/My-Project/main/images/PJ1_004.png)
 	
 	- 로그아웃
 		- 로그인 화면으로 돌아감
