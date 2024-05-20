@@ -79,5 +79,9 @@ namespace ex03_BusanExhibition.Models
         public static readonly string GETDATE_QUERY = @"SELECT CONVERT(CHAR(10), op_st_dt, 23) AS Save_Date
                                                           FROM [dbo].[Exhibition]
                                                          GROUP BY CONVERT(CHAR(10), op_st_dt, 23)";
+
+        //public static readonly string SEARCHYEAR_QUERY = @"SELECT *
+        //                                                     FROM Exhibition  
+        //                                                    WHERE SUBSTRING(op_st_dt, 1, 4) = '@year'";
     }
 }

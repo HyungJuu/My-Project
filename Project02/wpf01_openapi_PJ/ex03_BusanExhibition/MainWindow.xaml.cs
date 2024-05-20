@@ -191,27 +191,19 @@ namespace ex03_BusanExhibition
 
         }
 
-        private void TxtYear_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private async void TxtYear_KeyDown(object sender, KeyEventArgs e)
         {
-            //var curItem = GrdResult.SelectedItem as Exhibition;
+            if (e.Key == Key.Enter)
+            {
+                var year = TxtYear.Text;
 
-            //string Op_st_dt = curItem.op_st_dt;
-            //string SearchYear = Op_st_dt.Trim('-');
-            
-            //if (!string.IsNullOrEmpty(SearchYear) && SearchYear.Length == 4)
-            //{
-                
-            //    using(SqlConnection conn = new SqlConnection(Helpers.Common.CONNSTRING))
-            //    {
-            //        conn.Open();
+                // 이 쿼리문 사용
+                //select*
+                //  from Exhibition
+                // where SUBSTRING(op_st_dt, 1, 4) = '2023'
 
-            //        foreach (Exhibition item in GrdResult.Items)
-            //        {
-            //            SqlCommand cmd = new SqlCommand(Models.Exhibition.SELECT_QUERY, conn);
-            //            cmd.Parameters.AddWithValue("@op_st_dt", item.op_st_dt);
-            //        }
-            //    }
-            //}
+
+            }
 
         }
     }
