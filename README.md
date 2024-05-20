@@ -6,7 +6,7 @@
 	- mssql 데이터베이스 연결
 
 ## [Project02](https://github.com/HyungJuu/My-Project/blob/main/Project02.md)
-- WPF 개인 프로젝트 : 부산 전시회 조회앱
+- WPF 개인 프로젝트 : 부산 전시회 조회앱 (ex03_BusanExhibition)
 	- OpenAPI 연결
 	- mssql 데이터베이스 연결
 
