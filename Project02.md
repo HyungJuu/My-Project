@@ -20,5 +20,10 @@
 	
 		![저장](https://raw.githubusercontent.com/HyungJuu/My-Project/main/images/PJ2_004.png)
 
+https://github.com/HyungJuu/My-Project/assets/158007420/d8d1d4ec-a0c5-42ad-92f3-d3f1b5afb473
+
 - 조회한 전시회 정보를 데이터베이스에 저장함
 - 메인창에서 년도를 검색하면 데이터베이스에서 해당 년도의 전시회를 불러오도록... 추가예정
+
+
+
