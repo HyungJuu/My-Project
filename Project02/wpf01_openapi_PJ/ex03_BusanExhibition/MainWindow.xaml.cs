@@ -168,7 +168,7 @@ namespace ex03_BusanExhibition
 
 
         // 전시회 더블클릭으로 url 열기
-        private void GrrdResult_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void GrdResult_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var curItem = GrdResult.SelectedItem as Exhibition;
 
@@ -186,14 +186,63 @@ namespace ex03_BusanExhibition
             }
         }
 
-        private void CboReqDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void CboReqDate_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+            try
+            {
+                var selecteddate = CboReqDate.SelectedItem;
+
+                if (selecteddate == null)
+                {
+                    StsResult.Content = "날짜를 선택해주세요.";
+                    return;
+                }
+
+                string query = @"SELECT *
+                                   FROM Exhibition
+                                  WHERE op_st_dt = @date;";
+
+                using (SqlConnection conn = new SqlConnection(Helpers.Common.CONNSTRING))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@date", selecteddate);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataSet dSet = new DataSet();
+
+                    adapter.Fill(dSet);
+                    List<Exhibition> exhibitions = new List<Exhibition>();
+
+                    foreach (DataRow item in dSet.Tables[0].Rows)
+                    {
+                        exhibitions.Add(new Exhibition()
+                        {
+                            res_no = Convert.ToInt32(item["res_no"]),
+                            title = Convert.ToString(item["title"]),
+                            op_st_dt = Convert.ToString(item["op_st_dt"]),
+                            op_ed_dt = Convert.ToString(item["op_ed_dt"]),
+                            place_nm = Convert.ToString(item["place_nm"])
+
+                        });
+                    }
+
+                    GrdResult.ItemsSource = exhibitions;
+
+                    StsResult.Content = $"조회 완료: {exhibitions.Count}개의 전시회가 검색되었습니다.";
+                }
+            }
+            catch (Exception ex)
+            {
+                await this.ShowMessageAsync("조회오류", $"조회오류: {ex.Message}");
+            }
         }
 
         private async void TxtYear_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if (e.Key == Key.Enter || e.Key == Key.BrowserSearch)
             {
                 var year = TxtYear.Text;
 
@@ -206,8 +255,45 @@ namespace ex03_BusanExhibition
                                    FROM Exhibition
                                   WHERE SUBSTRING(op_st_dt, 1, 4) = @year";
 
-            }
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(Helpers.Common.CONNSTRING))
+                    {
+                        conn.Open();
 
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@year", year);
+
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataSet dSet = new DataSet();
+
+                        adapter.Fill(dSet);
+                        List<Exhibition> exhibitions = new List<Exhibition>();
+
+                        foreach (DataRow item in dSet.Tables[0].Rows)
+                        {
+                            exhibitions.Add(new Exhibition()
+                            {
+                                res_no = Convert.ToInt32(item["res_no"]),
+                                title = Convert.ToString(item["title"]),
+                                op_st_dt = Convert.ToString(item["op_st_dt"]),
+                                op_ed_dt = Convert.ToString(item["op_ed_dt"]),
+                                place_nm = Convert.ToString(item["place_nm"])
+
+                            });
+                        }
+
+                        GrdResult.ItemsSource = exhibitions;
+
+                        StsResult.Content = $"조회 완료: {exhibitions.Count}개의 전시회가 검색되었습니다.";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await this.ShowMessageAsync("조회오류", $"조회오류: {ex.Message}");
+                }
+            }
         }
     }
 }
+

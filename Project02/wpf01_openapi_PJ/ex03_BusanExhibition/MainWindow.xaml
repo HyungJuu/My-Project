@@ -42,7 +42,7 @@
                         Style="{StaticResource MahApps.Styles.Button.Square.Highlight}"
                         Click="BtnSaveData_Click" />
 
-                <ComboBox x:Name="CboReqDate" Width="150" Margin="5, 10, 10, 10"
+                <ComboBox x:Name="CboReqDate" Width="140" Margin="5, 10, 10, 10"
                           Style="{StaticResource MahApps.Styles.ComboBox}"
                           mah:TextBoxHelper.Watermark="검색날짜 선택"
                           mah:TextBoxHelper.UseFloatingWatermark="True"
@@ -50,12 +50,11 @@
                           SelectionChanged="CboReqDate_SelectionChanged" />
 
                 <TextBox x:Name="TxtYear" Width="150" Margin="5, 10, 10, 10" 
-                         Style="{StaticResource MahApps.Styles.TextBox.Search}"
+                         Style="{StaticResource MahApps.Styles.TextBox}"
                          mah:TextBoxHelper.Watermark="검색년도 입력"
                          mah:TextBoxHelper.UseFloatingWatermark="True"
                          mah:TextBoxHelper.ClearTextButton="True" 
                          KeyDown="TxtYear_KeyDown"
-
                          />
 
             </StackPanel>
@@ -66,7 +65,7 @@
                   IsReadOnly="True" ItemsSource="{Binding}"
                   AutoGenerateColumns="False"
                   Style="{StaticResource MahApps.Styles.DataGrid.Azure}"
-                  MouseDoubleClick="GrrdResult_MouseDoubleClick">
+                  MouseDoubleClick="GrdResult_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="전시번호" Binding="{Binding res_no}" Width="78" />
                 <DataGridTextColumn Header="제목" Binding="{Binding title}" Width="418"/>
