@@ -202,6 +202,9 @@ namespace ex03_BusanExhibition
                 //  from Exhibition
                 // where SUBSTRING(op_st_dt, 1, 4) = '2023'
 
+                string query = @"SELECT *
+                                   FROM Exhibition
+                                  WHERE SUBSTRING(op_st_dt, 1, 4) = @year";
 
             }
 
