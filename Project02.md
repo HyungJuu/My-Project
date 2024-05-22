@@ -6,6 +6,8 @@
     - 조회
         - 보여주고자 하는 정보만 출력
             - 전시번호, 제목, 전시시작일, 전시종료일, 장소
+            - 조회수를 변경하고 싶을 때 : OpenApiUri의 numOfRows 숫자 변경  
+                &rarr; 현재 : numOfRows=5000
 
         ![조회](https://raw.githubusercontent.com/HyungJuu/My-Project/main/images/PJ2_002.png)
 	
@@ -20,10 +22,14 @@
 	
 		![저장](https://raw.githubusercontent.com/HyungJuu/My-Project/main/images/PJ2_004.png)
 
-https://github.com/HyungJuu/My-Project/assets/158007420/d8d1d4ec-a0c5-42ad-92f3-d3f1b5afb473
+https://github.com/HyungJuu/My-Project/assets/158007420/864b44f0-7805-4e91-82f7-576828c725cd
+
 
 - 조회한 전시회 정보를 데이터베이스에 저장함
-- 메인창에서 년도를 검색하면 데이터베이스에서 해당 년도의 전시회를 불러오도록... 추가예정
+- 메인창에서 년도를 검색하면 데이터베이스에서 해당 년도의 전시회를 불러오도록... 추가예정 &rarr; 구현완료
+- 년도검색한 상태에서 더블클릭으로 url을 열수는 없을까.. &rarr; 확인필요
+
+
 
 
 

@@ -56,7 +56,7 @@ namespace ex03_BusanExhibition
 
         private async void BtnReqRealtime_Click(object sender, RoutedEventArgs e)
         {
-            string openApiUri = "https://apis.data.go.kr/6260000/BusanCultureExhibitDetailService/getBusanCultureExhibitDetail?serviceKey=pcZPPoVs1hndQ8SFudvigsMLAkfSdP1omx9Acyi3QzzuXr%2FAksdF3cQZrVKIVc4CD%2FFUPyADPvHZQxUNnyVYGg%3D%3D&numOfRows=5000&resultType=json";
+            string openApiUri = "https://apis.data.go.kr/6260000/BusanCultureExhibitDetailService/getBusanCultureExhibitDetail?serviceKey=pcZPPoVs1hndQ8SFudvigsMLAkfSdP1omx9Acyi3QzzuXr%2FAksdF3cQZrVKIVc4CD%2FFUPyADPvHZQxUNnyVYGg%3D%3D&numOfRows=3200&resultType=json";
             string result = string.Empty;
 
             // WebRequest, WebResponse 객체
