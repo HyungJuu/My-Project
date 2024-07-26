@@ -11,8 +11,8 @@ namespace ex03_BusanExhibition.Helpers
         public static readonly string CONNSTRING = "Data Source=localhost;" +
                                                     "Initial Catalog=EMS;" +
                                                     "Persist Security Info=True;" +
-                                                    "User ID=ems_user;" +
+                                                    "User ID=sa;" +
                                                     "Encrypt=False;" +
-                                                    "Password=ems_p@ss";
+                                                    "Password=mssql_p@ss";
     }
 }
